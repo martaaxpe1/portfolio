@@ -180,6 +180,60 @@
     background:rgba(14,26,71,.7);padding:8px 14px;border-radius:999px;border:none;cursor:pointer;transition:background .15s;}
   .restart-btn:hover{background:rgba(14,26,71,.92);}
   .restart-btn .ic{font-size:16px;line-height:1;}
+  .startbtn{display:inline-flex;align-items:center;gap:10px;background:var(--coral);color:#fff;border:none;border-radius:999px;padding:13px 26px;font-family:var(--font-mono);font-size:15px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;cursor:pointer;transition:background .15s;align-self:flex-start;}
+  .startbtn:hover{background:var(--coral-deep);}
+  .startbtn.playing{background:var(--navy);}
+  .startbtn .ic{font-size:13px;}
+
+  /* ---------- Polaroid · the Fold concept ---------- */
+  .pol-row{display:flex;gap:56px;align-items:center;flex:1;min-height:0;margin-top:6px;}
+  .pol-stage{flex:1.15;display:flex;align-items:center;justify-content:center;min-width:0;}
+  .pol-stage svg{width:100%;height:auto;max-height:700px;display:block;}
+  .pol-phones{flex:1;display:flex;gap:30px;justify-content:center;}
+  .pol-phone{width:286px;flex:none;display:flex;flex-direction:column;gap:12px;}
+  .pol-phone .scrn{position:relative;height:560px;border-radius:38px;background:#fff;border:7px solid #0c1414;overflow:hidden;box-shadow:0 34px 64px -34px rgba(14,26,71,.5);}
+  .pol-phone .plabel{text-align:center;font-family:var(--font-mono);font-size:14px;letter-spacing:.04em;color:var(--muted);text-transform:uppercase;}
+  .pol-phone .plabel b{color:#0B7E7E;font-weight:700;}
+  /* archivist (light) */
+  .pol-arch{position:absolute;inset:0;background:#fff;display:flex;flex-direction:column;padding:20px 18px;gap:13px;}
+  .pol-h{display:flex;align-items:center;justify-content:space-between;}
+  .pol-h .t{font-family:var(--font-display);font-size:27px;font-weight:800;letter-spacing:-.02em;color:#13201f;}
+  .pol-spec{display:flex;gap:3px;}
+  .pol-spec i{width:7px;height:18px;border-radius:2px;display:block;}
+  .pol-map{position:relative;height:186px;border-radius:18px;overflow:hidden;background:linear-gradient(135deg,#d9f0f0,#bfe6e6);}
+  .pol-map .road{position:absolute;background:#a7d6d6;border-radius:6px;}
+  .pol-pin{position:absolute;width:20px;height:20px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#E8453B;box-shadow:0 3px 6px rgba(0,0,0,.22);}
+  .pol-pin::after{content:'';position:absolute;inset:6px;border-radius:50%;background:#fff;}
+  .pol-thumb{position:absolute;background:#fff;padding:5px 5px 15px;border-radius:3px;box-shadow:0 7px 16px rgba(0,0,0,.28);transform:rotate(-5deg);}
+  .pol-thumb i{display:block;width:48px;height:42px;background:linear-gradient(135deg,#7bbfbf,#0B7E7E);border-radius:2px;}
+  .pol-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px;}
+  .pol-frame{background:#fff;border:1px solid #ececec;border-radius:4px;padding:7px 7px 19px;box-shadow:0 5px 12px rgba(14,26,71,.09);}
+  .pol-frame i{display:block;height:74px;border-radius:2px;}
+  .pol-frame .c{font-family:var(--font-mono);font-size:10px;color:#8a8f9c;margin-top:6px;text-transform:uppercase;letter-spacing:.04em;}
+  .pol-sub{font-family:var(--font-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#0B7E7E;font-weight:700;}
+  /* composer (dark viewfinder) */
+  .pol-comp{position:absolute;inset:0;background:linear-gradient(155deg,#13a0a0 0%,#0e7a7a 38%,#e7a86b 100%);}
+  .pol-comp .grain{position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,30,30,.15),rgba(10,20,20,.55));}
+  .pol-thirds i{position:absolute;background:rgba(255,255,255,.32);}
+  .pol-retic{position:absolute;width:72px;height:72px;border:2.5px solid rgba(255,255,255,.95);border-radius:12px;left:50%;top:45%;transform:translate(-50%,-50%);}
+  .pol-retic::after{content:'';position:absolute;inset:26px;border:1.5px solid rgba(255,255,255,.8);border-radius:50%;}
+  .pol-chip{position:absolute;display:inline-flex;align-items:center;gap:6px;font-family:var(--font-mono);font-size:11px;font-weight:700;letter-spacing:.03em;color:#fff;background:rgba(12,40,40,.6);padding:6px 11px;border-radius:999px;text-transform:uppercase;backdrop-filter:blur(2px);}
+  .pol-hint{position:absolute;left:50%;transform:translateX(-50%);bottom:118px;font-family:var(--font-mono);font-size:11px;color:#fff;background:rgba(0,0,0,.42);padding:6px 13px;border-radius:999px;white-space:nowrap;}
+  .pol-shutter{position:absolute;left:50%;bottom:34px;transform:translateX(-50%);width:62px;height:62px;border-radius:50%;background:#E8453B;border:4px solid #fff;box-shadow:0 0 0 3px rgba(255,255,255,.35);}
+  .pol-cbar{position:absolute;left:0;right:0;bottom:0;height:118px;background:linear-gradient(transparent,rgba(0,0,0,.45));}
+  .pol-cspec{position:absolute;left:0;right:0;bottom:0;height:5px;display:flex;}
+  .pol-cspec i{flex:1;}
+  /* drawing callout overlays */
+  .polc-wrap{position:relative;display:block;aspect-ratio:2796/1504;}
+  .polc-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;}
+  .polc-r,.polc-l,.polc-t{position:absolute;display:flex;align-items:center;}
+  .polc-r{transform:translate(-3.5px,-50%);}
+  .polc-l{flex-direction:row-reverse;transform:translate(calc(-100% + 3.5px),-50%);}
+  .polc-t{flex-direction:column;align-items:center;transform:translate(-50%,-100%);}
+  .polc .pd{width:7px;height:7px;border-radius:50%;background:#E8453B;flex:none;}
+  .polc .ln{width:22px;height:1.5px;background:#15201f;opacity:.32;flex:none;}
+  .polc-t .ln{width:1.5px;height:14px;}
+  .polc .pl{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#0B7E7E;white-space:nowrap;padding:0 5px;}
   @media print{.restart-btn{display:none!important;}}
   @media print{
     .vframe video,.frame video,.gif-motion,.wire-square video,.phone-crop video,.laptop video{display:none!important;}
@@ -365,7 +419,7 @@
           <img src="assets/youtube-logo.png" alt="YouTube" style="flex:none;width:92px;height:auto;">
           <div>
             <div style="font-family: var(--font-mono); font-size: 18px; letter-spacing: .16em; text-transform: uppercase; color: var(--coral); font-weight: 700">NOW FREELANCING FOR YOUTUBE · UNTIL MID-JULY</div>
-            <p style="margin: 10px 0 0; font-size: 6px; line-height: 1.5; color: var(--muted)">Leading discovery (via Unspoken) across consumers, creators and support agents — empathy-led methods, including metaphor elicitation, to surface the emotional drivers behind behaviour. Insights became a prioritised opportunity backlog adopted by the product design team, aligning six stakeholder groups.</p>
+            <p style="margin: 10px 0 0; font-size: 19px; line-height: 1.5; color: var(--muted)">Leading discovery (via Unspoken) across consumers, creators and support agents, with empathy-led methods, including metaphor elicitation, to surface the emotional drivers behind behaviour. Insights became a prioritised opportunity backlog adopted by the product design team, aligning with several stakeholder groups.</p>
           </div>
         </div>
       </div>
@@ -374,7 +428,7 @@
   </section>
 
   <!-- ════════ 02 · HUB / CONTENTS ════════ -->
-  <section class="slide pad" data-label="Contents">
+  <section class="slide mist pad" data-label="Contents">
     <div class="row between center">
       <div class="stack gap-s">
         <div class="kicker"><span class="bar"></span>Contents</div>
@@ -386,7 +440,7 @@
       <div class="card big" onclick="jump('Culligan — Phases')">
         <div class="idx">01</div>
         <h3>Culligan</h3>
-        <p>How to build a connected experience: from a retrofit prototype to a winning design language for the product portfolio.</p>
+        <p>How to build a connected experience: from a scrappy retrofit that became the diving board for a Red Dot–winning design language for the whole portfolio.</p>
         <div class="tags">
           <span class="tag ghost">HydroMe</span>
           <span class="tag ghost">Twist</span>
@@ -410,7 +464,7 @@
         <div class="card navy" onclick="jump('Polaroid — Concept')">
           <div class="idx">04</div>
           <h3>A concept for Polaroid</h3>
-          <p>A speculative connected camera — what I'd build with you.</p>
+          <p>A speculative connected camera concept.</p>
           <div class="go">Open →</div>
         </div>
       </div>
@@ -433,7 +487,7 @@
         <div class="phase">
           <div class="ph-tag">Phase 01 — Prove it</div>
           <h3>HydroMe</h3>
-          <p>Retrofit an existing dispenser into a connected, flavoured-water product. Own brand, touchscreen UX/UI, app-free loyalty, companion app, servicing dashboard.</p>
+          <p>Retrofit an existing dispenser into a connected, flavoured-water product. Own brand, touchscreen UX/UI, app-free loyalty, companion app, servicing dashboard. The in-house dispenser was the ideal platform for experimentation and marketable retrofitting</p>
           <div class="meta">Prototype → working ecosystem</div>
         </div>
         <div class="phase">
@@ -464,7 +518,7 @@
       <span class="award">The innovation</span>
     </div>
     <div class="arc mt-xl">
-      <div class="step"><div class="n">CHALLENGE</div><h4>No design language, no product</h4><p>Culligan had hardware and an insight: flavoured water for the office. We started with no design capability and nothing connected in the commercial space.</p></div>
+      <div class="step"><div class="n">CHALLENGE</div><h4>No design language, no IoT infrastructure</h4><p>Culligan had hardware and an insight: flavoured water for the office. We started with no design capability, no proper cloud infrastructure, pretty much starting from zero.</p></div>
       <div class="step"><div class="n">INSIGHT</div><h4>The screen is the product</h4><p>People don't want a cooler; they want a moment of choice and a little delight. Making water the beverage of choice without being boring, while avoiding plastic waste.</p></div>
       <div class="step"><div class="n">ASK</div><h4>Prove it, fast</h4><p>Stand up a real, usable connected experience on a retrofitted unit, cheap enough to trial and good enough to fall in love with.</p></div>
     </div>
@@ -545,7 +599,7 @@
   </section>
 
   <!-- ════════ 08 · HYDROME — TOUCHSCREEN ════════ -->
-  <section class="slide pad" data-label="HydroMe — Touchscreen">
+  <section class="slide mist pad" data-label="HydroMe — Touchscreen">
     <div class="row between center">
       <div class="stack gap-s">
         <div class="kicker"><span class="bar"></span>On-device · Touchscreen UX/UI</div>
@@ -568,7 +622,8 @@
       <div class="stack" style="flex:1;justify-content:center;">
         <div class="kicker"><span class="bar"></span>Digital experience</div>
         <h2 class="h-md mt-s" style="max-width:18ch;">Can't use the touchscreen? Your phone becomes the controller.</h2>
-        <p class="lede mt-m" style="max-width:34ch;">Scan the on-screen QR and drive the dispenser hands-free from your phone. An accessible path for anyone who can't reach or use the touchscreen comfortably.
+        <p class="lede mt-m" style="max-width:34ch;">Scan the on-screen QR and drive the dispenser hands-free from your phone. An accessible path for anyone who can't reach or use the touchscreen comfortably (due to COVID-19).
+
 Built based on AppClip technology to provide an native-like mobile experience, without the need of downloading an app. For Android, we created a web app.</p>
         <div class="tags mt-l"><span class="tag ghost">QR to phone</span><span class="tag ghost">Touch-free</span><span class="tag ghost">Inclusive</span></div>
       </div>
@@ -606,7 +661,7 @@ Built based on AppClip technology to provide an native-like mobile experience, w
   </section>
 
   <!-- ════════ 10 · HYDROME — COMPANION APP ════════ -->
-  <section class="slide pad" data-label="HydroMe — App">
+  <section class="slide mist pad" data-label="HydroMe — App">
     <div class="row between center">
       <div class="stack gap-s">
         <div class="kicker"><span class="bar"></span>Companion app · for those who want more</div>
@@ -626,7 +681,7 @@ Built based on AppClip technology to provide an native-like mobile experience, w
 
   <!-- ════════ 12 · HYDROME — NEOBOTTLE ════════ -->
   <!-- ════════ 12 · HYDROME — NEOBOTTLE CONCEPT ════════ -->
-  <section class="slide pad" data-label="HydroMe — Neobottle">
+  <section class="slide mist pad" data-label="HydroMe — Neobottle">
     <div class="stack" style="height:100%;">
       <div class="row between center" style="width:1580px;margin:0 auto;">
         <div class="stack gap-s">
@@ -640,7 +695,7 @@ Built based on AppClip technology to provide an native-like mobile experience, w
         <div class="mediacard" style="grid-column:3 / span 2;grid-row:1;"><div class="frame" style="background:var(--mist);"><img src="assets/neobottle-frontview.jpg" alt="Neobottle front view render" style="object-fit:contain;"></div><div class="cap"><b>Front view</b> · the final form</div></div>
         <div class="mediacard" style="grid-column:5 / span 2;grid-row:1;"><div class="frame" style="background:var(--mist);"><img src="assets/neobottle-magsafe.jpg" alt="Neobottle MagSafe charging" style="object-fit:contain;"></div><div class="cap"><b>Charging</b> · MagSafe-style dock</div></div>
         <div class="mediacard" style="grid-column:1 / span 3;grid-row:2;"><div class="frame" style="background:#ececec;position:relative;"><img class="gif-motion" src="assets/neobottle-exploded.gif" alt="Neobottle exploded animation" style="object-fit:contain;"><img class="pdf-still" src="assets/still-exploded.jpg" alt="" style="object-fit:contain;"></div><div class="cap"><b>Exploded</b> · every part considered</div></div>
-        <div class="mediacard" style="grid-column:4 / span 3;grid-row:2;"><div class="frame" style="background:#ececec;position:relative;"><img class="gif-motion" src="assets/neobottle-pulsing.gif" alt="Neobottle pulsing drink reminder" style="object-fit:contain;"><img class="pdf-still" src="assets/still-pulsing.jpg" alt="" style="object-fit:contain;"></div><div class="cap"><b>Reminder</b> · a gentle light to drink</div></div>
+        <div class="mediacard" style="grid-column:4 / span 3;grid-row:2;"><div class="frame" style="background:#ececec;position:relative;"><img class="gif-motion" src="assets/neobottle-pulsing.gif" alt="Neobottle pulsing drink reminder" style="object-fit:contain;"><img class="pdf-still" src="assets/still-pulsing.jpg" alt="" style="object-fit:contain;"></div><div class="cap">REMINDER · A GENTLE BLINK TO HYDRATE</div></div>
         <div class="mediacard" style="grid-column:7;grid-row:1 / span 2;"><div class="frame" style="background:var(--mist);"><img src="assets/neobottle-prototypes.jpg" alt="Neobottle working prototypes" style="object-fit:contain;"></div><div class="cap"><b>Prototypes</b> · made real</div></div>
       </div>
     </div>
@@ -648,14 +703,13 @@ Built based on AppClip technology to provide an native-like mobile experience, w
   </section>
 
   <!-- ════════ 12b · HYDROME — NEOBOTTLE RECOGNITION ════════ -->
-  <section class="slide pad" data-label="HydroMe — Neobottle Recognition" style="display:flex;flex-direction:column;">
+  <section class="slide mist pad" data-label="HydroMe — Neobottle Recognition" style="display:flex;flex-direction:column;">
     <div class="kicker"><span class="bar"></span>Neobottle · recognition in action</div>
     <div class="row gap-l mt-m" style="flex:1;min-height:0;">
       <div class="stack" style="flex:1;justify-content:center;">
         <h2 class="h-md">It knows it's you before you touch it.</h2>
-        <p class="lede mt-m" style="max-width:30ch;">As you approach, thanks to UWB technology, the dispenser recognises your Neobottle and personalises the ritual: your size, your flavours, ready before you reach the screen.
-
-You will never lose your refillable bottle again, because you can find it with Apple's "Find My".</p>
+        <p class="lede mt-m" style="max-width:30ch;">As you approach, thanks to UWB technology, the dispenser recognises your Neobottle and personalises the ritual: your size, your flavours, ready before you reach the screen. Best for hydration tracking, use it as a “key” to your HydroPass subscription.
+You will never lose your refillable bottle again, because you can find it with Apple's "Find My". </p>
         <div class="tags mt-l"><span class="tag ghost">Recognition</span><span class="tag ghost">Personalisation</span><span class="tag ghost">Concept</span></div>
       </div>
       <div class="vframe" style="flex:1.2;align-self:center;aspect-ratio:1/1;max-height:600px;">
@@ -669,12 +723,12 @@ You will never lose your refillable bottle again, because you can find it with A
   </section>
 
   <!-- ════════ 14 · TERN / HYDROTAP ════════ -->
-  <section class="slide pad" data-label="Culligan — Tern">
+  <section class="slide mist pad" data-label="Culligan — Tern">
     <div class="row gap-xl" style="height:100%;">
       <div class="stack" style="flex:1;justify-content:center;">
         <div class="kicker">TERN — AN EXPLORATION ON HYDROTAP</div>
         <h2 class="h-md mt-s" style="max-width:18ch;">Same thinking, existing platform, at scale.</h2>
-        <p class="lede mt-m" style="max-width:34ch;">We brought the HydroMe experience onto the HydroTap, a platform leader in the market of multi-functional tap. We retrofit the HydroMe with flavours and added the small touchscreen to the existing design, and pushing a new feature set with new interactions.</p>
+        <p class="lede mt-m" style="max-width:34ch;">We ported the HydroMe experience onto the HydroTap, a platform leader in the market of multi-functional taps.  We retrofit the HydroTap with flavours and added the small touchscreen to the existing design, so we could test the feature set with new interactions in a different product form factor.</p>
         <div class="tags mt-l"><span class="tag ghost">Prototype</span><span class="tag ghost">Retrofit</span><span class="tag ghost">Cross-product</span></div>
       </div>
       <div class="row gap-l center" style="flex:1;justify-content:center;">
@@ -707,7 +761,7 @@ You will never lose your refillable bottle again, because you can find it with A
   </section>
 
   <!-- ════════ 16 · TWIST — DETAILS ════════ -->
-  <section class="slide pad" data-label="Twist — Details">
+  <section class="slide mist pad" data-label="Twist — Details">
     <div class="row between center">
       <div class="stack gap-s">
         <div class="kicker"><span class="bar"></span>Twist · how it works</div>
@@ -738,12 +792,12 @@ You will never lose your refillable bottle again, because you can find it with A
   </section>
 
   <!-- ════════ 11 · HYDROME — SERVICING DASHBOARD ════════ -->
-  <section class="slide pad" data-label="HydroMe — Culligan One">
+  <section class="slide mist pad" data-label="HydroMe — Culligan One">
     <div class="row gap-xl" style="height:100%;">
       <div class="stack" style="flex:1;justify-content:center;">
         <div class="kicker"><span class="bar"></span>Back office · Culligan One</div>
         <h2 class="h-lg mt-m">The unglamorous part that makes it all work.</h2>
-        <p class="lede mt-l" style="max-width:32ch;">A servicing dashboard that eases back-office operations and became the standard later adopted by every other connected Culligan product.</p>
+        <p class="lede mt-l" style="max-width:32ch;">A servicing dashboard that eases back-office operations and became the standard and later adopted by every other connected Culligan product.</p>
         <ul class="klist mt-m">
           <li style="font-size: 24px"><span style="color:var(--coral);font-weight:700;">01</span>
 Fleet status &amp; health diagnostics</li>
@@ -772,7 +826,7 @@ Remote access for troubleshooting</li>
   </section>
 
   <!-- ════════ 16b · TWIST — NEW TOUCHSCREEN FLOW ════════ -->
-  <section class="slide pad" data-label="Twist — Touchscreen Flow" style="display:flex;flex-direction:column;">
+  <section class="slide mist pad" data-label="Twist — Touchscreen Flow" style="display:flex;flex-direction:column;">
     <div class="row between center">
       <div class="stack gap-s">
         <div class="kicker"><span class="bar"></span>Twist · on-device flow</div>
@@ -808,7 +862,7 @@ Remote access for troubleshooting</li>
   </section>
 
   <!-- ════════ 20 · VBL — OVERVIEW (GOALS + LAYERS) ════════ -->
-  <section class="slide pad" data-label="VBL — Overview">
+  <section class="slide mist pad" data-label="VBL — Overview">
     <div class="kicker"><span class="bar"></span>The VBL · why it exists</div>
     <h2 class="h-lg mt-s" style="max-width:26ch;">One language for the whole portfolio.</h2>
     <div class="row gap-xl mt-l">
@@ -868,7 +922,7 @@ Remote access for troubleshooting</li>
   </section>
 
   <!-- ════════ 22 · VBL — UX CHARACTER (LAYER 04) ════════ -->
-  <section class="slide pad" data-label="VBL — UX Character">
+  <section class="slide mist pad" data-label="VBL — UX Character">
     <div class="kicker"><span class="bar"></span>Layer 04 · UX character</div>
     <h2 class="h-lg mt-s" style="max-width:30ch;">However it's built, it feels unmistakably Culligan.</h2>
     <div class="row gap-xl mt-l" style="height:56%;align-items:center;">
@@ -890,7 +944,7 @@ Remote access for troubleshooting</li>
   </section>
 
   <!-- ════════ 20 · VBL — PURITY + END USER VISION ════════ -->
-  <section class="slide pad" data-label="VBL — Purity" style="display:flex;flex-direction:column;">
+  <section class="slide mist pad" data-label="VBL — Purity" style="display:flex;flex-direction:column;">
     <div class="row between center">
       <div class="stack gap-s">
         <div class="kicker"><span class="bar"></span>Purity · connecting with end users</div>
@@ -944,7 +998,7 @@ I've built recently.</h2>
   </section>
 
   <!-- ════════ 23 · LIGN — INTRO ════════ -->
-  <section class="slide pad" data-label="Lign — Intro">
+  <section class="slide mist pad" data-label="Lign — Intro">
     <div class="row" style="height:100%;align-items:center;justify-content:space-between;">
       <div class="stack" style="flex:0 0 720px;justify-content:center;">
         <div class="kicker"><span class="bar"></span>Lign.ai · AI-first product</div>
@@ -959,7 +1013,6 @@ I've built recently.</h2>
         <div class="wire-square">
           <video src="assets/lign-wireframes.mp4" autoplay loop muted playsinline poster="assets/still-lign-wireframes.png"></video>
           <img class="pdf-still" src="assets/still-lign-wireframes.png" alt="Lign wireframes in Figma" style="object-fit:cover;">
-          <button class="restart-btn" onclick="const v=this.parentNode.querySelector('video');v.currentTime=0;v.play();"><span class="ic">↺</span>Restart</button>
           <span class="play-badge">▶ Figma</span>
         </div>
         <div class="cap" style="font-family:var(--font-mono);font-size:16px;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);"><b style="color:var(--coral);font-weight:700;">Wireframes</b> · the Figma board</div>
@@ -980,30 +1033,30 @@ I've built recently.</h2>
     <div class="row mt-l" style="justify-content:center;gap:150px;align-items:flex-start;width:100%;">
       <div class="mediacard" style="flex:0 0 auto;align-items:center;text-align:center;">
         <div class="phone-crop" style="--ph:540px;">
-          <video src="assets/lign-onboarding.mp4" autoplay loop muted playsinline poster="assets/still-lign-onboarding.png"></video>
+          <video src="assets/lign-onboarding.mp4" loop muted playsinline poster="assets/still-lign-onboarding.png"></video>
           <img class="pc-still" src="assets/still-lign-onboarding.png" alt="">
-          <button class="restart-btn" onclick="const v=this.parentNode.querySelector('video');v.currentTime=0;v.play();"><span class="ic">↺</span>Restart</button>
           <span class="play-badge">▶ Video</span>
         </div>
         <div class="cap" style="white-space:nowrap;margin-top:14px;"><b>Conversational onboarding</b> · meet your agent</div>
+        <button class="startbtn" style="align-self:center;margin-top:14px;padding:10px 20px;font-size:14px;" onclick="const v=this.closest('.mediacard').querySelector('video');if(v.paused){v.play();this.firstElementChild.textContent='■';this.lastChild.textContent='Stop';this.classList.add('playing');}else{v.pause();this.firstElementChild.textContent='▶';this.lastChild.textContent='Play';this.classList.remove('playing');}"><span class="ic">▶</span>Play</button>
       </div>
       <div class="mediacard" style="flex:0 0 auto;align-items:center;text-align:center;">
         <div class="phone-crop" style="--ph:540px;">
-          <video src="assets/lign-self-management.mp4" autoplay loop muted playsinline poster="assets/still-lign-self.png"></video>
+          <video src="assets/lign-self-management.mp4" loop muted playsinline poster="assets/still-lign-self.png"></video>
           <img class="pc-still" src="assets/still-lign-self.png" alt="">
-          <button class="restart-btn" onclick="const v=this.parentNode.querySelector('video');v.currentTime=0;v.play();"><span class="ic">↺</span>Restart</button>
           <span class="play-badge">▶ Video</span>
         </div>
         <div class="cap" style="white-space:nowrap;margin-top:14px;"><b>Self-management</b> · your daily brief</div>
+        <button class="startbtn" style="align-self:center;margin-top:14px;padding:10px 20px;font-size:14px;" onclick="const v=this.closest('.mediacard').querySelector('video');if(v.paused){v.play();this.firstElementChild.textContent='■';this.lastChild.textContent='Stop';this.classList.add('playing');}else{v.pause();this.firstElementChild.textContent='▶';this.lastChild.textContent='Play';this.classList.remove('playing');}"><span class="ic">▶</span>Play</button>
       </div>
       <div class="mediacard" style="flex:0 0 auto;align-items:center;text-align:center;">
         <div class="phone-crop" style="--ph:540px;">
-          <video src="assets/lign-connections.mp4" autoplay loop muted playsinline poster="assets/still-lign-connections.png"></video>
+          <video src="assets/lign-connections.mp4" loop muted playsinline poster="assets/still-lign-connections.png"></video>
           <img class="pc-still" src="assets/still-lign-connections.png" alt="">
-          <button class="restart-btn" onclick="const v=this.parentNode.querySelector('video');v.currentTime=0;v.play();"><span class="ic">↺</span>Restart</button>
           <span class="play-badge">▶ Video</span>
         </div>
         <div class="cap" style="white-space:nowrap;margin-top:14px;"><b>Connections</b> · mentors &amp; recruiters</div>
+        <button class="startbtn" style="align-self:center;margin-top:14px;padding:10px 20px;font-size:14px;" onclick="const v=this.closest('.mediacard').querySelector('video');if(v.paused){v.play();this.firstElementChild.textContent='■';this.lastChild.textContent='Stop';this.classList.add('playing');}else{v.pause();this.firstElementChild.textContent='▶';this.lastChild.textContent='Play';this.classList.remove('playing');}"><span class="ic">▶</span>Play</button>
       </div>
     </div>
     <div class="foot"><span>02 — Lign.ai · Flows</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
@@ -1023,11 +1076,13 @@ I've built recently.</h2>
         <p class="lede" style="max-width:24ch;">A web app that helps people in the Netherlands find cafés, bars and restaurants with <span style="color:#f07b6b;">sunlit outdoor terraces</span>. </p>
         <div class="tags mt-l"><span class="tag ghost">Vibe-coded</span><span class="tag ghost">PWA</span><span class="tag ghost">Live</span><span class="tag ghost">Lovable</span></div>
       </div>
-      <div class="vframe" style="flex:none;width:295px;height:601px;border-radius:20px;border:none;box-shadow:0 34px 64px -34px rgba(14,26,71,.5);">
-        <video src="assets/sunspot-app.mp4" autoplay loop muted playsinline poster="assets/still-sunspot-app.png"></video>
-        <img class="pdf-still" src="assets/still-sunspot-app.png" alt="SunSpot mobile app" style="object-fit:cover;">
-        <button class="restart-btn" onclick="const v=this.parentNode.querySelector('video');v.currentTime=0;v.play();"><span class="ic">↺</span>Restart</button>
-        <span class="play-badge">▶ Video</span>
+      <div class="stack" style="flex:none;align-items:center;gap:16px;">
+        <div class="vframe" style="width:295px;height:601px;border-radius:20px;border:none;box-shadow:0 34px 64px -34px rgba(14,26,71,.5);">
+          <video src="assets/sunspot-app.mp4" loop muted playsinline poster="assets/still-sunspot-app.png"></video>
+          <img class="pdf-still" src="assets/still-sunspot-app.png" alt="SunSpot mobile app" style="object-fit:cover;">
+          <span class="play-badge">▶ Video</span>
+        </div>
+        <button class="startbtn" style="align-self:center;padding:10px 20px;font-size:14px;" onclick="const v=this.closest('.stack').querySelector('video');if(v.paused){v.play();this.firstElementChild.textContent='■';this.lastChild.textContent='Stop';this.classList.add('playing');}else{v.pause();this.firstElementChild.textContent='▶';this.lastChild.textContent='Play';this.classList.remove('playing');}"><span class="ic">▶</span>Play</button>
       </div>
       <div style="flex:1;">
         <ul class="klist">
@@ -1048,7 +1103,11 @@ I've built recently.</h2>
         <div class="kicker"><span class="bar"></span>SunSpot · the visual exploration</div>
         <h2 class="h-md mt-s">Three new visual directions on the table.</h2>
       </div>
-      <p class="body" style="max-width:34ch;text-align:right;">Same product, three personalities. Visual explorations made to test Claude Design and sharpen design brief prompts.</p>
+      <div style="text-align:right;">
+        <div style="font-family:var(--font-mono);font-size:16px;letter-spacing:.14em;text-transform:uppercase;color:var(--coral);font-weight:700;margin-bottom:10px;">Next steps</div>
+        <p class="body" style="margin:0 0 8px;">01 — Finalize the sun prediction accuracy feature</p>
+        <p class="body" style="margin:0;">02 — Explore partnerships with venues for the <em class="hl">top SUNspot</em></p>
+      </div>
     </div>
     <div class="row mt-l" style="justify-content:space-between;align-items:flex-start;width:100%;">
       <div class="mediacard" style="flex:0 0 auto;width:480px;align-items:center;text-align:center;">
@@ -1095,40 +1154,178 @@ I've built recently.</h2>
   <!-- ════════ 25 · POLAROID — DIVIDER ════════ -->
   <section class="slide navy pad" data-label="Polaroid — Concept">
     <div class="stack" style="height:100%;justify-content:center;position:relative;">
-      <div class="kicker"><span class="num">04</span><span class="bar"></span>A concept for Polaroid</div>
+      <div class="kicker">04
+A SPECULATIVE CONCEPT FOR POLAROID</div>
       <h2 class="h-xl mt-m" style="max-width:20ch;">What I'd want<br>to build with you.</h2>
-      <p class="lede mt-l" style="max-width:48ch;">A speculative connected camera — a pledge for real moments in an age of AI slop. We'll co-create the direction; the next slide frames the choices.</p>
-      <div class="tags mt-xl"><span class="tag ghost">Speculative</span><span class="tag ghost">Connected</span><span class="tag ghost">SX-70 inspired</span><span class="tag ghost">To be shaped together</span></div>
+      <p class="lede mt-l" style="max-width:48ch;">An SX-70-inspired foldable camera for real moments. Designed for the Archivist, where the physical print is the on-set interface and the digital archive is the permanent, production-wide memory.</p>
+      <div class="tags mt-xl"><span class="tag ghost">Conceptualization</span><span class="tag ghost">The Fold</span><span class="tag ghost">The Archivist</span></div></span></div>
     </div>
     <div class="foot"><span>04 — Polaroid Concept</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
   </section>
 
-  <!-- ════════ 26 · POLAROID — DIRECTIONS TO CO-CREATE ════════ -->
-  <section class="slide pad" data-label="Polaroid — Directions">
-    <div class="kicker"><span class="bar"></span>Let's choose a direction (placeholder)</div>
-    <h2 class="h-md mt-s" style="max-width:36ch;">Three angles for the concept — we'll pick one and go deep.</h2>
-    <div class="hub mt-l" style="grid-template-columns:repeat(3,1fr);">
-      <div class="card" style="cursor:default;">
-        <div class="idx">A</div>
-        <h3 style="font-size:30px;">The Archivist</h3>
-        <p>Analog craft, digital memory. Auto-archive, auto-frame, no reflections, a map of where every shot was taken.</p>
-        <div class="go">Off-screen, but never lost</div>
+  <!-- ════════ 26 · POLAROID — THE FOLD (CONCEPT) ════════ -->
+  <section class="slide mist pad" data-label="Polaroid — The Fold" data-screen-label="The Fold" style="display:flex;flex-direction:column;">
+    <div class="row between center">
+      <div class="stack gap-s">
+        <div class="kicker"><span class="bar"></span>A concept for Polaroid · The Fold</div>
+        <h2 class="h-md mt-s" style="max-width:28ch;">The Fold: a speculative camera concept for those who care about easy portability, the print and the archive.</h2>
       </div>
-      <div class="card" style="cursor:default;">
-        <div class="idx">B</div>
-        <h3 style="font-size:30px;">The Composer</h3>
-        <p>Connectivity for light & composition control — the camera helps you get the one real shot right, in-camera.</p>
-        <div class="go">Craft, assisted</div>
+      <p class="body" style="max-width:36ch;text-align:right;">The physical print becomes the on-set interface. The digital archive becomes the production-wide memory. The connected camera is the thing that writes to both simultaneously.</p>
+    </div>
+    <div class="pol-row" style="gap:36px;">
+      <div style="flex:none;width:256px;display:flex;align-items:center;">
+        <div style="background:var(--navy);border-radius:20px;padding:28px 24px;width:100%;">
+          <div style="font-family: var(--font-mono); font-size: 16px; letter-spacing: .14em; text-transform: uppercase; color: var(--coral); font-weight: 700; margin-bottom: 10px">PERSONA:
+THE ARCHIVIST</div>
+          <p style="margin: 0; font-size: 20px; line-height: 1.6; color: rgba(255,255,255,.82)">A film set script supervisor tracking every detail between takes. Every match cut depends on what they captured and they need it twice: once in their hands the moment the director cuts, and once findable by the whole production weeks later. </p>
+        </div>
       </div>
-      <div class="card" style="cursor:default;">
-        <div class="idx">C</div>
-        <h3 style="font-size:30px;">The Foldable</h3>
-        <p>An SX-70-inspired foldable form as the hero — connectivity that disappears into a beautiful object.</p>
-        <div class="go">Form leads</div>
+      <div class="pol-stage" style="flex:1.4;"><svg viewBox="0 0 880 680" width="100%" height="auto" style="display:block;" role="img" aria-label="Side-view sketch of The Fold foldable camera concept">
+  <defs>
+    <filter id="sketch" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.022" numOctaves="3" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="4.5"/>
+    </filter>
+    <!-- construction line pattern -->
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#0EA5A5" stroke-width="0.8" opacity="0.25"/>
+    </pattern>
+  </defs>
+
+  <!-- camera group with sketch filter -->
+  <g filter="url(#sketch)">
+    <!-- BASE PLATE -->
+    <rect x="148" y="540" width="530" height="72" rx="32" fill="#0EA5A5" fill-opacity="0.12" stroke="#15201f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- BACK BODY (left upright section) -->
+    <rect x="148" y="305" width="152" height="238" rx="38" fill="#0EA5A5" fill-opacity="0.14" stroke="#15201f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- LENS BARREL (upper-left, square-ish from side) -->
+    <rect x="132" y="110" width="158" height="162" rx="46" fill="#0EA5A5" fill-opacity="0.18" stroke="#15201f" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- lens front face (circle peeking right) -->
+    <circle cx="290" cy="193" r="56" fill="#0d2222" stroke="#15201f" stroke-width="4"/>
+    <circle cx="290" cy="193" r="36" fill="#0a1616" stroke="#15201f" stroke-width="2.5"/>
+    <circle cx="290" cy="193" r="18" fill="#060e0e" stroke="none"/>
+    <ellipse cx="273" cy="177" rx="11" ry="7" fill="white" opacity="0.4" stroke="none"/>
+    <!-- lens barrel top rounded ridge -->
+    <rect x="148" y="98" width="100" height="30" rx="14" fill="#0EA5A5" fill-opacity="0.22" stroke="#15201f" stroke-width="3"/>
+
+    <!-- BELLOWS DARK FILL -->
+    <path d="M 300 205 L 428 272 L 428 435 L 300 356 Z" fill="#1a2426" fill-opacity="0.82" stroke="#15201f" stroke-width="3"/>
+    <!-- BELLOWS FOLD LINES -->
+    <g stroke="#3a4a4a" stroke-width="2" stroke-linecap="round" opacity="0.75">
+      <line x1="302" y1="208" x2="302" y2="356"/>
+      <line x1="320" y1="217.4" x2="320" y2="366.9"/>
+      <line x1="338" y1="226.9" x2="338" y2="377.7"/>
+      <line x1="356" y1="236.3" x2="356" y2="388.6"/>
+      <line x1="374" y1="245.7" x2="374" y2="399.4"/>
+      <line x1="392" y1="255.1" x2="392" y2="410.3"/>
+      <line x1="410" y1="264.6" x2="410" y2="421.1"/>
+      <line x1="428" y1="274" x2="428" y2="432"/>
+    </g>
+    <!-- Bellows upper bounding edge (metal rail) -->
+    <line x1="300" y1="204" x2="429" y2="272" stroke="#9aaab0" stroke-width="5" stroke-linecap="round"/>
+    <!-- Bellows lower bounding edge -->
+    <line x1="300" y1="357" x2="429" y2="436" stroke="#9aaab0" stroke-width="5" stroke-linecap="round"/>
+
+    <!-- FRONT BODY (right main block) -->
+    <rect x="428" y="248" width="236" height="295" rx="40" fill="#0EA5A5" fill-opacity="0.12" stroke="#15201f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- shutter button (front face, lower right of front body) -->
+    <circle cx="618" cy="478" r="22" fill="#E8453B" fill-opacity="0.85" stroke="#15201f" stroke-width="3.5"/>
+    <!-- Silver diagonal strip across body -->
+    <path d="M 428 400 L 664 358" stroke="#9aaab0" stroke-width="8" stroke-linecap="round"/>
+    <!-- OLED strip (bottom of front body) -->
+    <rect x="450" y="522" width="150" height="26" rx="8" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="2"/>
+
+    <!-- GEAR (lower right) -->
+    <circle cx="648" cy="568" r="24" fill="none" stroke="#15201f" stroke-width="3"/>
+    <circle cx="648" cy="568" r="12" fill="none" stroke="#15201f" stroke-width="2"/>
+    <!-- gear teeth (8 small rects around) -->
+    <circle cx="648" cy="541" r="4" fill="#15201f"/>
+    <circle cx="648" cy="595" r="4" fill="#15201f"/>
+    <circle cx="621" cy="568" r="4" fill="#15201f"/>
+    <circle cx="675" cy="568" r="4" fill="#15201f"/>
+    <circle cx="629" cy="549" r="3.5" fill="#15201f"/>
+    <circle cx="667" cy="549" r="3.5" fill="#15201f"/>
+    <circle cx="629" cy="587" r="3.5" fill="#15201f"/>
+    <circle cx="667" cy="587" r="3.5" fill="#15201f"/>
+
+    <!-- PRINT EJECTING (bottom-left, slightly rotated) -->
+    <g transform="rotate(-7, 152, 545)">
+      <rect x="112" y="508" width="90" height="62" rx="4" fill="white" stroke="#15201f" stroke-width="3"/>
+      <rect x="120" y="516" width="74" height="42" rx="2" fill="#cdeaea"/>
+    </g>
+  </g>
+
+  <!-- CALLOUTS (no filter, crisp — top/right/bottom only to avoid flanking elements) -->
+  <g font-family="'Space Mono',monospace" font-size="14" font-weight="700" letter-spacing="0.04em" text-rendering="geometricPrecision">
+    <!-- TOP: AUTOFOCUS → lens barrel top -->
+    <line x1="185" y1="110" x2="185" y2="80" stroke="#15201f" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="185" cy="110" r="4.5" fill="#E8453B"/>
+    <text x="185" y="70" text-anchor="middle" fill="#0B7E7E">AUTOFOCUS</text>
+    <!-- TOP: CLASSIC LENS RING → front lens circle -->
+    <line x1="290" y1="138" x2="330" y2="80" stroke="#15201f" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="290" cy="138" r="4.5" fill="#E8453B"/>
+    <text x="330" y="70" text-anchor="middle" fill="#0B7E7E">CLASSIC LENS RING</text>
+    <!-- TOP: ROUNDER, SOFTER BODY → front body top edge -->
+    <line x1="546" y1="248" x2="580" y2="80" stroke="#15201f" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="546" cy="248" r="4.5" fill="#E8453B"/>
+    <text x="580" y="70" text-anchor="middle" fill="#0B7E7E">ROUNDER, SOFTER BODY</text>
+    <!-- RIGHT: LIGHT COMPENSATION → bellows area -->
+    <line x1="430" y1="290" x2="676" y2="290" stroke="#15201f" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="430" cy="290" r="4.5" fill="#E8453B"/>
+    <text x="684" y="295" text-anchor="start" fill="#0B7E7E">LIGHT COMPENSATION</text>
+    <!-- RIGHT: ONE-PRESS SHUTTER → shutter button -->
+    <line x1="640" y1="478" x2="676" y2="455" stroke="#15201f" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="640" cy="478" r="4.5" fill="#E8453B"/>
+    <text x="684" y="460" text-anchor="start" fill="#E8453B">ONE-PRESS SHUTTER</text>
+    <!-- BOTTOM: THE WHITE FRAME, ALWAYS → print ejecting -->
+    <line x1="152" y1="508" x2="190" y2="636" stroke="#15201f" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="152" cy="508" r="4.5" fill="#E8453B"/>
+    <text x="190" y="652" text-anchor="middle" fill="#0B7E7E">THE WHITE FRAME, ALWAYS</text>
+    <!-- BOTTOM: SPACE SAVING FOLDABLE BODY → bellows fold -->
+    <line x1="364" y1="436" x2="460" y2="636" stroke="#15201f" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="364" cy="436" r="4.5" fill="#E8453B"/>
+    <text x="460" y="652" text-anchor="middle" fill="#0B7E7E">SPACE SAVING FOLDABLE BODY</text>
+  </g>
+
+</svg></div>
+      <div style="flex:none;display:flex;gap:26px;align-items:flex-start;">
+        <div class="pol-phones">
+          <div class="pol-phone">
+            <div class="scrn"><div class="pol-arch">
+              <div class="pol-h"><div class="t">Archive</div><div class="pol-spec"><i style="background:#2A6FDB"></i><i style="background:#2FA84F"></i><i style="background:#F5C518"></i><i style="background:#F0883E"></i><i style="background:#E8453B"></i></div></div>
+              <div class="pol-map">
+                <div class="road" style="left:-12px;top:64px;width:122%;height:13px;transform:rotate(-8deg)"></div>
+                <div class="road" style="left:44px;top:-12px;width:13px;height:124%;transform:rotate(11deg)"></div>
+                <div class="road" style="right:30px;top:-12px;width:13px;height:124%;transform:rotate(-9deg)"></div>
+                <div class="pol-pin" style="left:58px;top:70px;"></div>
+                <div class="pol-pin" style="left:150px;top:112px;"></div>
+                <div class="pol-pin" style="left:198px;top:48px;"></div>
+                <div class="pol-thumb" style="left:92px;top:34px;"><i></i></div>
+              </div>
+              <div class="pol-sub">On this day · 12 shots</div>
+              <div class="pol-grid">
+                <div class="pol-frame"><i style="background:linear-gradient(135deg,#f1c27d,#c97b5a)"></i><div class="c">SS25 Look 01</div></div>
+                <div class="pol-frame"><i style="background:linear-gradient(135deg,#9fcfcf,#0b7e7e)"></i><div class="c">SS25 Look 02</div></div>
+                <div class="pol-frame"><i style="background:linear-gradient(135deg,#b6a7e0,#5b46a8)"></i><div class="c">SS25 Look 03</div></div>
+                <div class="pol-frame"><i style="background:linear-gradient(135deg,#f4a9b8,#d65b76)"></i><div class="c">SS25 Look 04</div></div>
+              </div>
+            </div></div>
+          </div>
+        </div>
+        <div style="width:240px;display:flex;flex-direction:column;gap:10px;align-self:center;">
+          <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;">
+            <li style="display:flex;gap:11px;align-items:baseline;"><span style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:#E8453B;letter-spacing:.1em;flex:none;">01</span><span style="font-size:15px;line-height:1.5;color:var(--muted);">No scanning — instant wireless digital copy the moment you shoot.</span></li>
+            <li style="display:flex;gap:11px;align-items:baseline;"><span style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:#E8453B;letter-spacing:.1em;flex:none;">02</span><span style="font-size:15px;line-height:1.5;color:var(--muted);">No reflections — glass-frame shots auto-cleaned in the app.</span></li>
+            <li style="display:flex;gap:11px;align-items:baseline;"><span style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:#E8453B;letter-spacing:.1em;flex:none;">03</span><span style="font-size:15px;line-height:1.5;color:var(--muted);">Frame added automatically — every digital image gets the iconic white border.</span></li>
+            <li style="display:flex;gap:11px;align-items:baseline;"><span style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:#E8453B;letter-spacing:.1em;flex:none;">04</span><span style="font-size:15px;line-height:1.5;color:var(--muted);">Gallery organised — AI tags each shoot for a searchable archive.</span></li>
+            <li style="display:flex;gap:11px;align-items:baseline;"><span style="font-family:var(--font-mono);font-size:13px;font-weight:700;color:#E8453B;letter-spacing:.1em;flex:none;">05</span><span style="font-size:15px;line-height:1.5;color:var(--muted);">Maps all shots — every image geo-pinned on a living archive map.</span></li>
+          </ul>
+        </div>
       </div>
     </div>
-    <p class="body mt-l" style="max-width:64ch;">I'll research the current Now+ and flag anything that overlaps, then translate Polaroid's design language — physical and digital — into the concept.</p>
-    <div class="foot"><span>04 — Polaroid Concept</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+    <div class="foot"><span>04 — Polaroid · The Fold</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
   </section>
 
   <!-- ════════ 27 · CLOSING ════════ -->
@@ -1137,7 +1334,6 @@ I've built recently.</h2>
     <div class="stack" style="height:100%;justify-content:center;position:relative;">
       <div class="kicker"><span class="bar"></span>Thank you</div>
       <h2 class="display mt-m" style="font-size:104px;">Let's make<br>real things.</h2>
-      <p class="lede mt-l" style="max-width:42ch;">I know what it takes to build cool, exciting, connected consumer products — and I'm genuinely excited to do it with Polaroid.</p>
       <div class="row gap-m mt-xl center">
         <span class="award" style="border-color:#fff;color:#fff;">Marta Axpe</span>
         <span style="font-family:var(--font-mono);font-size:18px;letter-spacing:.12em;color:rgba(255,255,255,.55);text-transform:uppercase;">martaaxpe.com · Experience Designer & Innovation Strategist</span>
