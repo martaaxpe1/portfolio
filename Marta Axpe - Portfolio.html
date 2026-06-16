@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marta Axpe — Portfolio · Confidential</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    /* ---- palette (from martaaxpe.com, elevated) ---- */
+    --navy:#0E1A47;
+    --navy-2:#16245C;
+    --ink:#0E1A47;
+    --coral:#F07A6A;
+    --coral-deep:#E0604F;
+    --coral-soft:#FBD9D1;
+    --lavender:#D9DEEF;
+    --lavender-soft:#EBEEF8;
+    --paper:#FFFFFF;
+    --mist:#F4F5FA;
+    --muted:#5B6589;
+    --muted-2:#8C93AE;
+    --line:#DDE1EE;
+    --line-dark:rgba(255,255,255,.14);
+
+    --font-display:'Bricolage Grotesque',sans-serif;
+    --font-body:'Hanken Grotesk',sans-serif;
+    --font-mono:'Space Mono',monospace;
+
+    --pad-x:130px;
+    --pad-y:96px;
+  }
+
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;background:#0a0f24;}
+  deck-stage:not(:defined){visibility:hidden;}
+
+  /* ---------- slide base ---------- */
+  .slide{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--paper);
+    overflow:hidden;
+    position:relative;
+  }
+  .slide.pad{padding:var(--pad-y) var(--pad-x);}
+  .slide.navy{background:var(--navy);color:#fff;}
+  .slide.lav{background:var(--lavender);}
+  .slide.mist{background:var(--mist);}
+
+  /* ---------- type ---------- */
+  .kicker{
+    font-family:var(--font-mono);
+    font-size:24px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--coral);font-weight:700;
+    display:flex;align-items:center;gap:16px;
+  }
+  .kicker .num{color:var(--muted-2);}
+  .navy .kicker .num{color:rgba(255,255,255,.45);}
+  .kicker .bar{height:1px;width:48px;background:var(--coral);display:inline-block;}
+
+  h1,h2,h3{font-family:var(--font-display);font-weight:700;margin:0;line-height:1.02;letter-spacing:-.02em;}
+  .display{font-size:118px;font-weight:800;line-height:.96;letter-spacing:-.035em;}
+  .h-xl{font-size:88px;font-weight:700;letter-spacing:-.03em;}
+  .h-lg{font-size:64px;font-weight:700;letter-spacing:-.025em;}
+  .h-md{font-size:44px;font-weight:700;letter-spacing:-.02em;}
+  .h-sm{font-size:30px;font-weight:700;letter-spacing:-.01em;}
+  .lede{font-size:30px;line-height:1.4;color:var(--muted);max-width:24ch;font-weight:400;}
+  .navy .lede{color:rgba(255,255,255,.72);}
+  .body{font-size:24px;line-height:1.55;color:var(--muted);font-weight:400;}
+  .navy .body{color:rgba(255,255,255,.72);}
+  .coral{color:var(--coral);}
+  em.hl{font-style:normal;color:var(--coral);}
+
+  /* ---------- footer chrome ---------- */
+  .foot{
+    position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:46px;
+    display:flex;justify-content:space-between;align-items:center;
+    font-family:var(--font-mono);font-size:18px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--muted-2);
+  }
+  .navy .foot{color:rgba(255,255,255,.4);}
+  .foot .lock{display:flex;align-items:center;gap:9px;}
+  .foot .dot{width:5px;height:5px;border-radius:50%;background:var(--coral);}
+
+  /* ---------- chips / tags ---------- */
+  .tags{display:flex;flex-wrap:wrap;gap:10px;}
+  .tag{
+    font-family:var(--font-mono);font-size:18px;letter-spacing:.04em;
+    padding:8px 16px;border-radius:999px;background:var(--navy);color:#fff;font-weight:400;
+  }
+  .lav .tag,.mist .tag{background:var(--navy);}
+  .tag.ghost{background:transparent;border:1px solid var(--line);color:var(--muted);}
+  .navy .tag.ghost{border-color:var(--line-dark);color:rgba(255,255,255,.7);}
+
+  /* ---------- placeholder media ---------- */
+  .ph{
+    position:relative;border-radius:18px;overflow:hidden;
+    background:
+      repeating-linear-gradient(135deg,rgba(14,26,71,.045) 0 2px,transparent 2px 13px),
+      var(--lavender-soft);
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;text-align:center;
+  }
+  .navy .ph{
+    background:
+      repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 2px,transparent 2px 13px),
+      rgba(255,255,255,.04);
+    border-color:var(--line-dark);
+  }
+  .ph .ph-l{
+    font-family:var(--font-mono);font-size:18px;letter-spacing:.06em;
+    color:var(--muted);padding:18px 22px;line-height:1.7;text-transform:uppercase;max-width:80%;
+  }
+  .navy .ph .ph-l{color:rgba(255,255,255,.6);}
+  .ph .ph-l b{display:block;color:var(--coral);font-size:16px;letter-spacing:.18em;margin-bottom:8px;}
+  .ph.img{background:#0a1030;border:none;}
+  .ph.img img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* ---------- real media: video + image cards ---------- */
+  .vframe{position:relative;border-radius:20px;overflow:hidden;background:#0a1030;border:1px solid var(--line);}
+  .vframe video,.vframe img{display:block;width:100%;height:100%;object-fit:cover;}
+  .vframe.portrait{aspect-ratio:9/16;height:100%;margin:0 auto;}
+  .mediacard{display:flex;flex-direction:column;gap:12px;min-width:0;}
+  .mediacard .frame{flex:1;border-radius:16px;overflow:hidden;background:#0a1030;border:1px solid var(--line);min-height:0;}
+  .mediacard .frame img,.mediacard .frame video{display:block;width:100%;height:100%;object-fit:cover;}
+  .mediacard .cap{font-family:var(--font-mono);font-size:16px;letter-spacing:.03em;color:var(--muted);text-transform:uppercase;line-height:1.35;}
+  .mediacard .cap b{color:var(--coral);font-weight:700;}
+  .navy .mediacard .cap{color:rgba(255,255,255,.6);}
+
+  /* ---------- system diagram ---------- */
+  .sysdiagram{display:flex;align-items:stretch;justify-content:center;gap:0;}
+  .sysnode{border:1px solid var(--line);border-radius:16px;padding:24px 26px;background:var(--mist);display:flex;flex-direction:column;justify-content:center;}
+  .sysnode .sk{font-family:var(--font-mono);font-size:15px;letter-spacing:.16em;text-transform:uppercase;color:var(--coral);}
+  .sysnode h4{font-family:var(--font-display);font-size:25px;font-weight:700;letter-spacing:-.01em;margin:11px 0 7px;}
+  .sysnode p{font-size:16px;line-height:1.4;color:var(--muted);margin:0;}
+  .sysarrow{flex:0 0 56px;display:flex;align-items:center;justify-content:center;color:var(--coral);font-size:32px;font-family:var(--font-body);}
+  .sysbranch{display:flex;flex-direction:column;gap:16px;justify-content:center;}
+  .sysbranch .sysnode{padding:18px 24px;}
+  .sysbranch .sysnode h4{font-size:22px;margin:8px 0 5px;}
+
+  /* ---------- PDF / print: swap motion for a chosen still frame ---------- */
+  .pdf-still{display:none;}
+  .play-badge{display:none;align-items:center;gap:7px;position:absolute;left:14px;bottom:14px;z-index:3;
+    font-family:var(--font-mono);font-size:15px;letter-spacing:.1em;text-transform:uppercase;color:#fff;
+    background:rgba(14,26,71,.74);padding:7px 14px 7px 12px;border-radius:999px;}
+  @media print{
+    .vframe video,.frame video,.gif-motion{display:none!important;}
+    .pdf-still{display:block!important;position:absolute;inset:0;width:100%;height:100%;}
+    .play-badge{display:inline-flex!important;}
+  }
+
+  /* ---------- helpers ---------- */
+  .stack{display:flex;flex-direction:column;}
+  .row{display:flex;}
+  .grid{display:grid;}
+  .gap-s{gap:16px;} .gap-m{gap:28px;} .gap-l{gap:48px;} .gap-xl{gap:72px;}
+  .mt-s{margin-top:16px;} .mt-m{margin-top:28px;} .mt-l{margin-top:48px;} .mt-xl{margin-top:72px;}
+  .fill{flex:1;}
+  .center{align-items:center;} .between{justify-content:space-between;}
+
+  /* ---------- arc (challenge/solution/etc) rail ---------- */
+  .arc{display:flex;gap:0;align-items:stretch;}
+  .arc .step{flex:1;padding:0 34px;border-left:1px solid var(--line);}
+  .arc .step:first-child{border-left:none;padding-left:0;}
+  .navy .arc .step{border-color:var(--line-dark);}
+  .arc .step .n{font-family:var(--font-mono);font-size:18px;letter-spacing:.2em;color:var(--coral);}
+  .arc .step h4{font-family:var(--font-display);font-size:25px;font-weight:700;margin:14px 0 12px;letter-spacing:-.01em;}
+  .arc .step p{font-size:19px;line-height:1.5;color:var(--muted);margin:0;}
+  .navy .arc .step p{color:rgba(255,255,255,.68);}
+
+  /* ---------- hub cards ---------- */
+  .hub{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .hub .card{
+    border:1px solid var(--line);border-radius:20px;padding:34px 34px 30px;
+    background:var(--paper);cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,border-color .18s;
+    display:flex;flex-direction:column;min-height:236px;
+  }
+  .hub .card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -24px rgba(14,26,71,.35);border-color:var(--coral);}
+  .hub .card .idx{font-family:var(--font-mono);font-size:24px;color:var(--coral);letter-spacing:.14em;}
+  .hub .card h3{font-size:34px;margin:auto 0 8px;letter-spacing:-.02em;}
+  .hub .card p{font-size:24px;color:var(--muted);margin:0;line-height:1.4;}
+  .hub .card .go{margin-top:18px;font-family:var(--font-mono);font-size:16px;letter-spacing:.1em;color:var(--muted-2);text-transform:uppercase;}
+  /* hub2 — Culligan hero + stacked equal-weight column */
+  .hub.hub2{grid-template-columns:1.55fr 1fr;height:600px;}
+  .hub2 .col{display:flex;flex-direction:column;gap:22px;}
+  .hub2 .col .card{flex:1;min-height:0;justify-content:center;padding:28px 34px;}
+  .hub2 .col .card h3{font-size:36px;margin:8px 0 8px;}
+  .hub2 .col .card p{font-size:20px;line-height:1.35;}
+  .hub2 .col .card .go{margin-top:14px;font-size:15px;}
+  .card.big{padding:58px 54px 48px;}
+  .card.big .idx{font-size:28px;letter-spacing:.14em;}
+  .card.big h3{font-size:96px;line-height:.92;margin:22px 0 24px;}
+  .card.big p{font-size:28px;line-height:1.35;max-width:24ch;}
+  .card.big .tags{margin-top:auto;}
+  .card.big .go{font-size:20px;margin-top:26px;}
+  .card.navy{background:var(--navy);border-color:var(--navy);}
+  .card.navy .idx{color:var(--coral);}
+  .card.navy h3{color:#fff;}
+  .card.navy p{color:rgba(255,255,255,.72);}
+  .card.navy .go{color:rgba(255,255,255,.5);}
+
+  /* ---------- section divider numerals ---------- */
+  .bignum{font-family:var(--font-display);font-weight:800;font-size:300px;line-height:.8;letter-spacing:-.04em;color:var(--coral);opacity:.16;position:absolute;}
+
+  /* ---------- timeline (3 phases) ---------- */
+  .phases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+  .phase{padding:0 40px;border-left:1px solid var(--line-dark);position:relative;}
+  .phase:first-child{border-left:none;padding-left:0;}
+  .phase .ph-tag{font-family:var(--font-mono);font-size:18px;letter-spacing:.18em;color:var(--coral);text-transform:uppercase;}
+  .phase h3{font-size:40px;margin:16px 0 14px;color:#fff;}
+  .phase p{font-size:19px;line-height:1.5;color:rgba(255,255,255,.66);margin:0;}
+  .phase .meta{margin-top:18px;font-family:var(--font-mono);font-size:16px;letter-spacing:.1em;color:rgba(255,255,255,.45);text-transform:uppercase;}
+
+  /* ecosystem nodes */
+  .eco{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .eco .node{border:1px solid var(--line);border-radius:16px;padding:26px 28px;background:var(--paper);}
+  .eco .node .e-k{font-family:var(--font-mono);font-size:18px;letter-spacing:.14em;color:var(--coral);text-transform:uppercase;}
+  .eco .node h4{font-family:var(--font-display);font-size:25px;font-weight:700;margin:12px 0 8px;letter-spacing:-.01em;}
+  .eco .node p{font-size:18px;line-height:1.45;color:var(--muted);margin:0;}
+
+  /* keyline list */
+  .klist{list-style:none;margin:0;padding:0;}
+  .klist li{font-size:21px;line-height:1.5;color:var(--muted);padding:18px 0;border-top:1px solid var(--line);display:flex;gap:18px;}
+  .klist li:last-child{border-bottom:1px solid var(--line);}
+  .navy .klist li{color:rgba(255,255,255,.72);border-color:var(--line-dark);}
+  .klist li .lk{font-family:var(--font-mono);font-size:15px;color:var(--coral);min-width:34px;}
+
+  /* award badge */
+  .award{display:inline-flex;align-items:center;gap:14px;border:1px solid var(--coral);color:var(--coral);border-radius:999px;padding:12px 24px;font-family:var(--font-mono);font-size:18px;letter-spacing:.16em;text-transform:uppercase;}
+
+  /* gate */
+  .gate-lock{width:54px;height:54px;border:2px solid var(--coral);border-radius:14px;position:relative;}
+  .gate-lock::before{content:"";position:absolute;width:26px;height:22px;border:2px solid var(--coral);border-bottom:none;border-radius:13px 13px 0 0;top:-18px;left:50%;transform:translateX(-50%);}
+  .gate-lock::after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:var(--coral);top:14px;left:50%;transform:translateX(-50%);}
+
+  a.plink{color:var(--coral);text-decoration:none;border-bottom:1px solid rgba(240,122,106,.4);}
+
+  /* entrance */
+  @media (prefers-reduced-motion:no-preference){
+    [data-deck-active] .anim{animation:rise .6s both;}
+    [data-deck-active] .anim.d1{animation-delay:.08s;}
+    [data-deck-active] .anim.d2{animation-delay:.16s;}
+    [data-deck-active] .anim.d3{animation-delay:.24s;}
+    @keyframes rise{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+  }
+</style>
+</head>
+<body>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="400" fill="#0E1A47"/>
+    <circle cx="200" cy="168" r="62" fill="none" stroke="#F07A6A" stroke-width="10"/>
+    <text x="200" y="300" font-family="Georgia, serif" font-size="116" font-weight="800" fill="#FFFFFF" text-anchor="middle">MA</text>
+  </svg>
+</template>
+<deck-stage width="1920" height="1080">
+
+  <!-- ════════ 01 · COVER / GATE ════════ -->
+  <section class="slide navy pad" data-label="Cover">
+    <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 80% -10%,rgba(240,122,106,.16),transparent 60%);"></div>
+    <div class="stack" style="height:100%;position:relative;">
+      <div class="row between center">
+        <div class="kicker"><span class="bar"></span>Portfolio · 2026</div>
+        <div class="lock kicker" style="color:rgba(255,255,255,.55);"><span class="gate-lock" style="transform:scale(.42);transform-origin:right center;width:0;"></span>Confidential</div>
+      </div>
+
+      <div class="fill stack" style="justify-content:center;">
+        <div class="anim d1 kicker" style="color:rgba(255,255,255,.6);margin-bottom:30px;">Experience Designer · Innovation Strategist</div>
+        <h1 class="display anim d1">Marta Axpe</h1>
+        <p class="lede anim d2 mt-l" style="max-width:30ch;font-size:34px;color:rgba(255,255,255,.8);">Connected physical-digital products people actually love, designed end-to-end, from first prototype to Red&nbsp;Dot.</p>
+        <div class="anim d3 row gap-s mt-xl" style="align-items:center;">
+          <span class="gate-lock"></span>
+          <div class="stack" style="gap:4px;">
+            <div style="font-family:var(--font-mono);font-size:24px;letter-spacing:.1em;color:#fff;text-transform:uppercase;">Prepared for the Polaroid hiring team</div>
+            <div style="font-family:var(--font-mono);font-size:24px;letter-spacing:.06em;color:rgba(255,255,255,.5);text-transform:uppercase;">Confidential — not for distribution</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════ 02 · HUB / CONTENTS ════════ -->
+  <section class="slide pad" data-label="Contents">
+    <div class="row between center">
+      <div class="stack gap-s">
+        <div class="kicker"><span class="bar"></span>Contents</div>
+        <h2 class="h-lg mt-s">What I'll walk you through</h2>
+      </div>
+      <p class="body" style="max-width:30ch;text-align:right;">Four bodies of work, one belief: the app should be <em class="hl">part of the product</em>, never a bolt-on.</p>
+    </div>
+
+    <div class="hub hub2 mt-l">
+      <div class="card big" onclick="jump('Culligan — Phases')">
+        <div class="idx">01</div>
+        <h3>Culligan</h3>
+        <p>How to build a connected experience — from a retrofit prototype to a Red&nbsp;Dot–winning design language.</p>
+        <div class="tags">
+          <span class="tag ghost">HydroMe</span>
+          <span class="tag ghost">Tern</span>
+          <span class="tag ghost">Twist</span>
+          <span class="tag ghost">VBL → Red Dot</span>
+        </div>
+        <div class="go">Open the main story →</div>
+      </div>
+      <div class="col">
+        <div class="card" onclick="jump('Lign — Overview')">
+          <div class="idx">02</div>
+          <h3>Lign.ai</h3>
+          <p>AI-first product — wireframes to a finished, shippable UI.</p>
+          <div class="go">Process · UX/UI →</div>
+        </div>
+        <div class="card" onclick="jump('SunSpot')">
+          <div class="idx">03</div>
+          <h3>SunSpot</h3>
+          <p>A vibe-coded weekend product. Live, and still being sharpened.</p>
+          <div class="go">findsunspot.com →</div>
+        </div>
+        <div class="card navy" onclick="jump('Polaroid — Concept')">
+          <div class="idx">04</div>
+          <h3>A concept for Polaroid</h3>
+          <p>A speculative connected camera — what I'd build with you.</p>
+          <div class="go">Open →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>Marta Axpe — Portfolio</span>
+      <span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span>
+    </div>
+  </section>
+
+  <!-- ════════ 03 · ABOUT / HOW I WORK ════════ -->
+  <section class="slide lav pad" data-label="How I work">
+    <div class="row gap-xl" style="height:100%;">
+      <div class="stack" style="flex:1.1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>How I work</div>
+        <h2 class="h-xl mt-m">I design the<br>whole system,<br>not the screen.</h2>
+        <p class="lede mt-l" style="max-width:34ch;">Hardware, on-device UI, companion app, loyalty, and the back-office that keeps it all running — designed as one coherent experience. I know the regulatory constraints and how people actually use these products, so I keep that layer close.</p>
+      </div>
+      <div class="stack gap-m" style="flex:1;justify-content:center;">
+        <div class="eco" style="grid-template-columns:1fr 1fr;">
+          <div class="node"><div class="e-k">Discover</div><h4>Insight first</h4><p>Validate the real human need before committing years and millions.</p></div>
+          <div class="node"><div class="e-k">Shape</div><h4>Ecosystem</h4><p>Physical + digital + service, designed together from day one.</p></div>
+          <div class="node"><div class="e-k">Prove</div><h4>Build & trial</h4><p>Working prototypes, stress-tested in the real world, not slideware.</p></div>
+          <div class="node"><div class="e-k">Scale</div><h4>Design language</h4><p>Systematise so quality survives across a whole portfolio.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <span>About — Marta Axpe</span>
+      <span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span>
+    </div>
+  </section>
+
+  <!-- ════════ 04 · CULLIGAN — SECTION DIVIDER + 3 PHASES ════════ -->
+  <section class="slide navy pad" data-label="Culligan — Phases">
+    <div class="stack" style="height:100%;position:relative;">
+      <div class="kicker"><span class="num">01</span><span class="bar"></span>Culligan · The main story</div>
+      <h2 class="h-xl mt-m" style="max-width:18ch;">From no design<br>to <em class="hl">Red Dot</em>.</h2>
+      <p class="lede mt-m" style="max-width:48ch;">We built the first flavoured-water connected product for the office — and turned it into a design language that just won a 2026 Red Dot. Three phases:</p>
+
+      <div class="phases mt-xl">
+        <div class="phase">
+          <div class="ph-tag">Phase 01 — Prove it</div>
+          <h3>HydroMe</h3>
+          <p>Retrofit an existing dispenser into a connected, flavoured-water product. Own brand, touchscreen UX/UI, app-free loyalty, companion app, servicing dashboard.</p>
+          <div class="meta">Prototype → working ecosystem</div>
+        </div>
+        <div class="phase">
+          <div class="ph-tag">Phase 02 — Commercialise</div>
+          <h3>Twist</h3>
+          <p>The US business wanted it. We hardened it into a commercial product — brand-aligned screen, phone control via QR, continued servicing platform.</p>
+          <div class="meta">In market · quench.culligan.com</div>
+        </div>
+        <div class="phase">
+          <div class="ph-tag">Phase 03 — Systematise</div>
+          <h3>VBL → Purity</h3>
+          <p>A design language (VBL) for the wider portfolio. First product line built on it — Purity — won the Red&nbsp;Dot Award 2026.</p>
+          <div class="meta">Red Dot 2026 · 6-layer system</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot">
+      <span>01 — Culligan</span>
+      <span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span>
+    </div>
+  </section>
+
+  <!-- ════════ 05 · HYDROME — THE ASK ════════ -->
+  <section class="slide pad" data-label="HydroMe — Ask">
+    <div class="kicker"><span class="num">01 · Phase 1</span><span class="bar"></span>HydroMe</div>
+    <div class="row between center mt-s">
+      <h2 class="h-lg" style="max-width:20ch;">Designing the foundation for the connected water experience.</h2>
+    </div>
+    <div class="arc mt-xl">
+      <div class="step"><div class="n">CHALLENGE</div><h4>No design language, no product</h4><p>Culligan had hardware and an insight: flavoured water for the office. We started with no design capability and nothing connected in the commercial space.</p></div>
+      <div class="step"><div class="n">INSIGHT</div><h4>The screen is the product</h4><p>People don't want a cooler; they want a moment of choice and a little delight. Making water the beverage of choice without being boring, while avoiding plastic waste.</p></div>
+      <div class="step"><div class="n">ASK</div><h4>Prove it, fast</h4><p>Stand up a real, usable connected experience on a retrofitted unit, cheap enough to trial and good enough to fall in love with.</p></div>
+    </div>
+    <div class="sysdiagram mt-xl">
+      <div class="sysnode" style="width:262px;"><div class="sk">Hardware</div><h4>The dispenser</h4><p>A retrofitted unit, made connected.</p></div>
+      <div class="sysarrow">→</div>
+      <div class="sysnode" style="width:262px;"><div class="sk">On-device</div><h4>Touchscreen UX/UI</h4><p>The 20-second pour ritual.</p></div>
+      <div class="sysarrow">→</div>
+      <div class="sysbranch" style="width:380px;">
+        <div class="sysnode"><div class="sk">End user</div><h4>App + Wallet loyalty</h4><p>Tracking & points — no app required.</p></div>
+        <div class="sysnode"><div class="sk">Operations</div><h4>Culligan One dashboard</h4><p>Remote servicing & fleet health.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 06 · HYDROME — THE SOLUTION SHAPE ════════ -->
+  <section class="slide mist pad" data-label="HydroMe — Solution">
+    <div class="row gap-xl" style="height:100%;">
+      <div class="stack" style="flex:0.82;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>The shape of the solution</div>
+        <h2 class="h-lg mt-m">A connected ritual,<br>not a vending machine.</h2>
+        <p class="lede mt-l" style="max-width:32ch;">A retrofitted dispenser with a touchscreen at its heart — choose your flavour, scan to make it yours, earn points without an app. A delightful 20-second ritual, backed by a serious service platform.</p>
+        <div class="tags mt-l">
+          <span class="tag">Touchscreen UX/UI</span>
+          <span class="tag">Own brand & UI</span>
+          <span class="tag">QR accessibility</span>
+          <span class="tag">Wallet loyalty</span>
+          <span class="tag">Companion app</span>
+          <span class="tag">Servicing dashboard</span>
+        </div>
+      </div>
+      <div class="vframe" style="flex:1.3;align-self:center;height:840px;background:#fff;"><img src="assets/hydrome-overview.png" alt="HydroMe annotated overview" style="width:100%;height:100%;object-fit:contain;"></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 07 · HYDROME — THE ECOSYSTEM ════════ -->
+  <section class="slide navy pad" data-label="HydroMe — Ecosystem">
+    <div class="row between center">
+      <div class="stack gap-s">
+        <div class="kicker"><span class="bar"></span>One coherent ecosystem</div>
+        <h2 class="h-md mt-s">Every piece designed to fit the others</h2>
+      </div>
+      <p class="body" style="max-width:30ch;text-align:right;">No app required to get value — but a deeper one waiting for those who want it.</p>
+    </div>
+    <div class="eco mt-l">
+      <div class="node"><div class="e-k">On-device</div><h4>Touchscreen UX/UI</h4><p>Flavour & boost selection, nutrition, the pour. The core ritual.</p></div>
+      <div class="node"><div class="e-k">Brand</div><h4>Own visual language</h4><p>No DS to inherit — so we built a fun brand from the value prop.</p></div>
+      <div class="node"><div class="e-k">Access</div><h4>QR on screen</h4><p>Scan to control & for accessibility — no install needed.</p></div>
+      <div class="node"><div class="e-k">Loyalty</div><h4>Apple Wallet points</h4><p>Earn loyalty with zero app — built on Apple Wallet capability.</p></div>
+      <div class="node"><div class="e-k">Companion</div><h4>Hydration app</h4><p>Tracking & deeper engagement for those who opt in.</p></div>
+      <div class="node"><div class="e-k">Back office</div><h4>Culligan One dashboard</h4><p>Servicing ops — later reused by every connected product.</p></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 08 · HYDROME — TOUCHSCREEN ════════ -->
+  <section class="slide pad" data-label="HydroMe — Touchscreen">
+    <div class="row between center">
+      <div class="stack gap-s">
+        <div class="kicker"><span class="bar"></span>On-device · Touchscreen UX/UI</div>
+        <h2 class="h-md mt-s">The whole ritual, on the glass.</h2>
+      </div>
+      <p class="body" style="max-width:34ch;text-align:right;">Choose water type, add up to three flavours or boosts, see nutrition live, then pour — designed for sunlight, wet hands and a 20-second attention span.</p>
+    </div>
+    <div class="row mt-m" style="justify-content:space-between;align-items:flex-start;width:100%;">
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:618px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/ts-home.png" alt="Touchscreen home" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Home</b> · water, your way</div></div>
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:618px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/ts-mood.png" alt="Flavour & functional selection" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Choose</b> · flavour & functionals</div></div>
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:618px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/ts-pour.png" alt="Place your bottle to pour" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Pour</b> · place your bottle</div></div>
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:618px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/ts-rewards.png" alt="Rewards and daily hydration" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Rewards</b> · hydration & impact</div></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 09 · HYDROME — ACCESSIBILITY ════════ -->
+  <section class="slide mist pad" data-label="HydroMe — Accessibility">
+    <div class="row gap-xl" style="height:100%;">
+      <div class="stack" style="flex:1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>Access · no app required</div>
+        <h2 class="h-md mt-s" style="max-width:18ch;">Can't use the touchscreen? Your phone becomes the controller.</h2>
+        <div class="eco mt-l" style="grid-template-columns:1fr;gap:16px;max-width:34ch;">
+          <div class="node"><div class="e-k">Accessibility</div><h4>Scan the on-screen QR</h4><p>Drive the dispenser hands-free from your phone — an accessible path for anyone who can't reach or use the touchscreen comfortably.</p></div>
+        </div>
+        <div class="tags mt-l"><span class="tag ghost">QR to phone</span><span class="tag ghost">Touch-free</span><span class="tag ghost">Inclusive</span></div>
+      </div>
+      <div class="row center" style="flex:1;justify-content:center;">
+        <div class="vframe portrait">
+          <video src="assets/appclip-touchfree.mp4" autoplay loop muted playsinline poster="assets/still-accessibility.jpg"></video>
+          <img class="pdf-still" src="assets/still-accessibility.jpg" alt="" style="object-fit:cover;">
+          <span class="play-badge">▶ Video</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 09b · HYDROME — LOYALTY ════════ -->
+  <section class="slide mist pad" data-label="HydroMe — Loyalty">
+    <div class="row gap-xl" style="height:100%;">
+      <div class="stack" style="flex:1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>Loyalty · the Apple nod</div>
+        <h2 class="h-md mt-s" style="max-width:18ch;">Loyalty that works the second you walk up — no download.</h2>
+        <div class="eco mt-l" style="grid-template-columns:1fr;gap:16px;max-width:34ch;">
+          <div class="node"><div class="e-k">Loyalty</div><h4>Points in Apple Wallet</h4><p>Earn and hold loyalty straight in Apple Wallet — no app to install. Built on Apple's own capabilities, so the reward is there the moment you tap.</p></div>
+        </div>
+        <div class="tags mt-l"><span class="tag ghost">Apple Wallet</span><span class="tag ghost">Zero-install</span><span class="tag ghost">HydroPass</span></div>
+      </div>
+      <div class="row center" style="flex:1;justify-content:center;">
+        <div class="vframe portrait">
+          <video src="assets/hydropass.mp4" autoplay loop muted playsinline poster="assets/still-loyalty.jpg"></video>
+          <img class="pdf-still" src="assets/still-loyalty.jpg" alt="" style="object-fit:cover;">
+          <span class="play-badge">▶ Video</span>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 10 · HYDROME — COMPANION APP ════════ -->
+  <section class="slide pad" data-label="HydroMe — App">
+    <div class="row between center">
+      <div class="stack gap-s">
+        <div class="kicker"><span class="bar"></span>Companion app · for those who want more</div>
+        <h2 class="h-md mt-s">Hydration tracking & deeper engagement</h2>
+      </div>
+      <p class="body" style="max-width:28ch;text-align:right;">The optional layer — the product still works fully without it.</p>
+    </div>
+    <div class="row mt-m" style="justify-content:space-between;align-items:flex-start;width:100%;">
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:606px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/app-onboarding.png" alt="App onboarding" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Onboarding</b> · water, your way</div></div>
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:606px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/app-homescreen.png" alt="App home screen" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Home</b> · daily progress</div></div>
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:606px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/app-hydrationgoal.png" alt="Set a hydration goal" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Hydration goal</b> · your target</div></div>
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:606px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/app-payment.png" alt="HydroPass payment" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>Upgrade</b> · choose a pass</div></div>
+      <div class="mediacard" style="flex:0 0 auto;"><div class="frame" style="flex:none;height:606px;width:auto;border-radius:24px;background:var(--mist);"><img src="assets/app-hydropass.png" alt="Add HydroPass to Apple Wallet" style="height:100%;width:auto;object-fit:contain;"></div><div class="cap" style="white-space:nowrap;"><b>HydroPass</b> · Apple Wallet</div></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 11 · HYDROME — SERVICING DASHBOARD ════════ -->
+  <section class="slide navy pad" data-label="HydroMe — Culligan One">
+    <div class="row gap-xl" style="height:100%;">
+      <div class="stack" style="flex:1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>Back office · Culligan One</div>
+        <h2 class="h-lg mt-m">The unglamorous part that makes it real.</h2>
+        <p class="lede mt-l" style="max-width:32ch;">A servicing dashboard that eases back-office operations — and became the standard later adopted by every other connected Culligan product.</p>
+        <ul class="klist mt-m">
+          <li><span class="lk">01</span>Fleet status & remote diagnostics</li>
+          <li><span class="lk">02</span>Service scheduling & consumables</li>
+          <li><span class="lk">03</span>Reused across the connected portfolio</li>
+        </ul>
+      </div>
+      <div class="ph" style="flex:1.1;"><div class="ph-l"><b>Asset</b>Culligan One dashboard screens<br>(from "Culligan One Features & integrations" — extracting)</div></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 12 · HYDROME — NEOBOTTLE ════════ -->
+  <!-- ════════ 12 · HYDROME — NEOBOTTLE CONCEPT ════════ -->
+  <section class="slide pad" data-label="HydroMe — Neobottle">
+    <div class="stack" style="height:100%;">
+      <div class="row between center" style="width:1580px;margin:0 auto;">
+        <div class="stack gap-s">
+          <div class="kicker"><span class="bar"></span>Exploration · the companion bottle</div>
+          <h2 class="h-lg mt-s">Neobottle</h2>
+        </div>
+        <p class="body" style="max-width:38ch;text-align:right;">A companion bottle that makes the dispenser recognize you. Recognizable design, customazible and suitable for every use.</p>
+      </div>
+      <div class="bento" style="margin-top:22px;display:grid;grid-template-columns:166px 166px 166px 166px 166px 166px 500px;grid-template-rows:330px 320px;gap:14px;justify-content:center;align-content:center;flex:1;min-height:0;">
+        <div class="mediacard" style="grid-column:1 / span 2;grid-row:1;"><div class="frame" style="background:var(--mist);"><img src="assets/neobottle-smartbottle.png" alt="Neobottle render family" style="object-fit:contain;"></div><div class="cap"><b>Render</b> · the bottle family</div></div>
+        <div class="mediacard" style="grid-column:3 / span 2;grid-row:1;"><div class="frame" style="background:var(--mist);"><img src="assets/neobottle-frontview.jpg" alt="Neobottle front view render" style="object-fit:contain;"></div><div class="cap"><b>Front view</b> · the final form</div></div>
+        <div class="mediacard" style="grid-column:5 / span 2;grid-row:1;"><div class="frame" style="background:var(--mist);"><img src="assets/neobottle-magsafe.jpg" alt="Neobottle MagSafe charging" style="object-fit:contain;"></div><div class="cap"><b>Charging</b> · MagSafe-style dock</div></div>
+        <div class="mediacard" style="grid-column:1 / span 3;grid-row:2;"><div class="frame" style="background:#ececec;position:relative;"><img class="gif-motion" src="assets/neobottle-exploded.gif" alt="Neobottle exploded animation" style="object-fit:contain;"><img class="pdf-still" src="assets/still-exploded.jpg" alt="" style="object-fit:contain;"></div><div class="cap"><b>Exploded</b> · every part considered</div></div>
+        <div class="mediacard" style="grid-column:4 / span 3;grid-row:2;"><div class="frame" style="background:#ececec;position:relative;"><img class="gif-motion" src="assets/neobottle-pulsing.gif" alt="Neobottle pulsing drink reminder" style="object-fit:contain;"><img class="pdf-still" src="assets/still-pulsing.jpg" alt="" style="object-fit:contain;"></div><div class="cap"><b>Reminder</b> · a gentle light to drink</div></div>
+        <div class="mediacard" style="grid-column:7;grid-row:1 / span 2;"><div class="frame" style="background:var(--mist);"><img src="assets/neobottle-prototypes.jpg" alt="Neobottle working prototypes" style="object-fit:contain;"></div><div class="cap"><b>Prototypes</b> · made real</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 12b · HYDROME — NEOBOTTLE RECOGNITION ════════ -->
+  <section class="slide pad" data-label="HydroMe — Neobottle Recognition" style="display:flex;flex-direction:column;">
+    <div class="kicker"><span class="bar"></span>Neobottle · recognition in action</div>
+    <div class="row gap-l mt-m" style="flex:1;min-height:0;">
+      <div class="stack" style="flex:1;justify-content:center;">
+        <h2 class="h-md">It knows it's you before you touch it.</h2>
+        <p class="lede mt-m" style="max-width:30ch;">As you approach, thanks to UWB technology, the dispenser recognises your Neobottle and personalises the ritual: your size, your flavours, ready before you reach the screen.
+
+You will never lose your refillable bottle again, because you can find it with Apple's "Find My".</p>
+        <div class="tags mt-l"><span class="tag ghost">Recognition</span><span class="tag ghost">Personalisation</span><span class="tag ghost">Concept</span></div>
+      </div>
+      <div class="vframe" style="flex:1.2;align-self:center;height:600px;">
+        <video src="assets/neobottle-recognition.mp4" autoplay loop muted playsinline poster="assets/still-neo-recognition.jpg"></video>
+        <img class="pdf-still" src="assets/still-neo-recognition.jpg" alt="" style="object-fit:cover;">
+        <span class="play-badge">▶ Video</span>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 13 · HYDROME — PROCESS / WHAT I'D DO DIFFERENTLY ════════ -->
+  <section class="slide mist pad" data-label="HydroMe — Process">
+    <div class="row gap-xl" style="height:100%;">
+      <div class="stack" style="flex:1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>Process & methods</div>
+        <h2 class="h-md mt-s">Retrofit fast, learn in the wild</h2>
+        <ul class="klist mt-m">
+          <li><span class="lk">→</span>Started from an existing unit to get real fast</li>
+          <li><span class="lk">→</span>Designed the ecosystem in parallel, not in sequence</li>
+          <li><span class="lk">→</span>Trialled & stress-tested with real office users</li>
+        </ul>
+      </div>
+      <div class="stack" style="flex:1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>What I'd do differently</div>
+        <p class="lede mt-m" style="max-width:34ch;">Placeholder — your honest reflection here. (e.g. bring hardware & service ops into the room even earlier; instrument the trial for sharper data.)</p>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · HydroMe</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 14 · TERN / HYDROTAP ════════ -->
+  <section class="slide pad" data-label="Culligan — Tern">
+    <div class="kicker"><span class="num">01 · Exploration</span><span class="bar"></span>Tern — at scale on HydroTap</div>
+    <div class="row gap-l mt-m" style="height:78%;">
+      <div class="stack" style="flex:0.78;justify-content:center;">
+        <h2 class="h-md">Same thinking,<br>existing platform,<br>at scale.</h2>
+        <p class="lede mt-m" style="max-width:26ch;">We brought the HydroMe experience onto the HydroTap — a platform already in market — and pushed a new feature set with new interactions.</p>
+        <div class="tags mt-l"><span class="tag ghost">Prototype</span><span class="tag ghost">Retrofit</span><span class="tag ghost">Cross-product</span></div>
+      </div>
+      <div class="row gap-l" style="flex:1.25;justify-content:center;">
+        <div class="mediacard" style="flex:1;max-width:360px;">
+          <div class="vframe portrait"><video src="assets/tern-enhanced-dispense.mp4" autoplay loop muted playsinline poster="assets/still-tern-enhanced.jpg"></video><img class="pdf-still" src="assets/still-tern-enhanced.jpg" alt="" style="object-fit:cover;"><span class="play-badge">▶ Video</span></div>
+          <div class="cap"><b>Enhanced dispense</b> · a tiny touchscreen, retrofitted onto a HydroTap that never had one.</div>
+        </div>
+        <div class="mediacard" style="flex:1;max-width:360px;">
+          <div class="vframe portrait"><video src="assets/tern-registered-user.mp4" autoplay loop muted playsinline poster="assets/still-tern-registered.jpg"></video><img class="pdf-still" src="assets/still-tern-registered.jpg" alt="" style="object-fit:cover;"><span class="play-badge">▶ Video</span></div>
+          <div class="cap"><b>Registered user</b> · one HydroPass in Apple Wallet — loyalty goes cross-product.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · Tern</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 15 · TWIST — COMMERCIAL ════════ -->
+  <section class="slide navy pad" data-label="Culligan — Twist">
+    <div class="kicker"><span class="num">01 · Phase 2</span><span class="bar"></span>Twist — the commercial product</div>
+    <div class="row between center mt-s">
+      <h2 class="h-lg" style="max-width:20ch;">We proved it worked.<br>So we shipped it.</h2>
+      <a class="award" href="https://quench.culligan.com/product/twist-flavored-and-sparkling-water-dispenser/" target="_blank" rel="noopener">In market ↗</a>
+    </div>
+    <div class="arc mt-xl">
+      <div class="step"><div class="n">CHALLENGE</div><h4>From trial to product</h4><p>After trialling & stress-testing, the US operating business wanted their own version. Time to commercialise.</p></div>
+      <div class="step"><div class="n">SOLUTION</div><h4>Twist</h4><p>A commercial flavoured & sparkling water dispenser — new branding on the touchscreen, brand-aligned and ready for market.</p></div>
+      <div class="step"><div class="n">CONSTRAINT</div><h4>Honest about hardware</h4><p>The screen was brand-aligned; the hardware wasn't yet on a design language. That gap is exactly what Phase 3 solves.</p></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · Twist</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 16 · TWIST — DETAILS ════════ -->
+  <section class="slide pad" data-label="Twist — Details">
+    <div class="kicker"><span class="bar"></span>Twist · how it works</div>
+    <div class="row gap-l mt-m" style="height:66%;">
+      <div class="row gap-s" style="flex:1.3;">
+        <div class="ph img" style="flex:1;border-radius:18px;"><img src="assets/twist-touchscreen.png" alt="Twist touchscreen UI"></div>
+        <div class="ph img" style="flex:1;border-radius:18px;"><img src="assets/twist-dispenser-use.png" alt="Twist dispenser in use"></div>
+      </div>
+      <div class="stack gap-m" style="flex:1;">
+        <div class="node eco" style="display:block;border:1px solid var(--line);border-radius:16px;padding:26px 28px;">
+          <div class="e-k" style="color:var(--coral);font-family:var(--font-mono);font-size:18px;letter-spacing:.14em;">Brand-aligned screen</div>
+          <h4 style="font-family:var(--font-display);font-size:24px;margin:12px 0 8px;">New touchscreen branding</h4>
+          <p class="body" style="font-size:17px;">Carried the new brand into the on-device UI, consistent across the line.</p>
+        </div>
+        <div class="node eco" style="display:block;border:1px solid var(--line);border-radius:16px;padding:26px 28px;">
+          <div class="e-k" style="color:var(--coral);font-family:var(--font-mono);font-size:18px;letter-spacing:.14em;">Phone control</div>
+          <h4 style="font-family:var(--font-display);font-size:24px;margin:12px 0 8px;">QR → control from your phone</h4>
+          <p class="body" style="font-size:17px;">Accessibility path: scan a QR to drive the dispenser from your phone.</p>
+        </div>
+        <div class="node eco" style="display:block;border:1px solid var(--line);border-radius:16px;padding:26px 28px;">
+          <div class="e-k" style="color:var(--coral);font-family:var(--font-mono);font-size:18px;letter-spacing:.14em;">Continuity</div>
+          <h4 style="font-family:var(--font-display);font-size:24px;margin:12px 0 8px;">Same servicing platform</h4>
+          <p class="body" style="font-size:17px;">Culligan One carried straight through to the commercial product.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · Twist</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 17 · VBL — SECTION DIVIDER ════════ -->
+  <section class="slide navy pad" data-label="Culligan — VBL">
+    <div class="stack" style="height:100%;position:relative;justify-content:center;">
+      <div class="kicker"><span class="num">01 · Phase 3</span><span class="bar"></span>The design language</div>
+      <h2 class="h-xl mt-m" style="max-width:20ch;">One language for the<br>whole portfolio.</h2>
+      <p class="lede mt-l" style="max-width:50ch;">A Visual Brand Language (VBL) so quality scales beyond one product. I gave the agency room to explore the <em class="hl">physical</em> within brand parameters; I drove the <em class="hl">digital</em> directly — interaction patterns, on-device UI, the end-user's mental model.</p>
+      <div class="row gap-s mt-xl"><span class="award">Red Dot Award 2026</span></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · VBL</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 18 · VBL — 6 LAYERS ════════ -->
+  <section class="slide pad" data-label="VBL — Layers">
+    <div class="kicker"><span class="bar"></span>The VBL, in six layers</div>
+    <h2 class="h-md mt-s" style="max-width:34ch;">How we defined the language — physical and digital, layer by layer.</h2>
+    <div class="grid mt-l" style="grid-template-columns:repeat(3,1fr);gap:18px;">
+      <div class="eco node"><div class="e-k">Layer 01</div><h4>Overall physical form</h4><p>The silhouette and stance of the product family.</p></div>
+      <div class="eco node"><div class="e-k">Layer 02</div><h4>Physical points of interaction</h4><p>Where and how the body invites touch.</p></div>
+      <div class="eco node"><div class="e-k">Layer 03</div><h4>Colour, material, finish, graphics</h4><p>The CMF & graphic system across the range.</p></div>
+      <div class="eco node"><div class="e-k">Layer 04</div><h4>UX + UI elements & behaviours</h4><p>On-device interaction patterns — my domain.</p></div>
+      <div class="eco node"><div class="e-k">Layer 05</div><h4>Approach to construction</h4><p>How it's built, expressed honestly in the design.</p></div>
+      <div class="eco node"><div class="e-k">Layer 06</div><h4>Mechanical sound & feel</h4><p>The tactile and acoustic signature of use.</p></div>
+    </div>
+    <div class="foot"><span>01 — Culligan · VBL</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 19 · VBL — PHYSICAL + DIGITAL DIRECTION ════════ -->
+  <section class="slide mist pad" data-label="VBL — Direction">
+    <div class="row gap-l" style="height:100%;">
+      <div class="stack" style="flex:1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>Physical · with Ammunition</div>
+        <h2 class="h-sm mt-s">Room to explore, inside the lines</h2>
+        <p class="body mt-m" style="max-width:34ch;">I worked with the brand team to set the parameters, then gave Ammunition room to explore the physical design within them. Initiated through the Product Design Program.</p>
+        <div class="ph mt-m" style="height:230px;"><div class="ph-l"><b>Asset</b>Final physical design-language elements / renders</div></div>
+      </div>
+      <div class="stack" style="flex:1;justify-content:center;">
+        <div class="kicker"><span class="bar"></span>Digital · I led directly</div>
+        <h2 class="h-sm mt-s">Interaction, on-device UI, mental models</h2>
+        <p class="body mt-m" style="max-width:34ch;">I gave much more direct direction on the digital side — I know the regulatory constraints and how people actually use these products, so I kept that layer close.</p>
+        <div class="ph mt-m" style="height:230px;"><div class="ph-l"><b>GIFs</b>Touchscreen interactions in the new language</div></div>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · VBL</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 20 · VBL — PURITY + END USER VISION ════════ -->
+  <section class="slide pad" data-label="VBL — Purity">
+    <div class="kicker"><span class="bar"></span>Purity · carrying the end-user experience forward</div>
+    <div class="row gap-l mt-m" style="height:64%;">
+      <div class="ph" style="flex:1.2;"><div class="ph-l"><b>Asset</b>Purity product render</div></div>
+      <div class="stack" style="flex:1;justify-content:center;">
+        <h2 class="h-md">From HydroMe to Purity</h2>
+        <p class="lede mt-m" style="max-width:32ch;">We envisioned how the end-user experience built for HydroMe would carry into the Purity product — connecting with end users, not just filtering water.</p>
+        <p class="body mt-m" style="max-width:36ch;">Reference: "GBFC — Connecting with End Users" — I'll pull the key vision frames.</p>
+      </div>
+    </div>
+    <div class="foot"><span>01 — Culligan · VBL</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 21 · VBL — RED DOT PAYOFF ════════ -->
+  <section class="slide navy pad" data-label="VBL — Red Dot">
+    <div class="stack center" style="height:100%;justify-content:center;text-align:center;">
+      <div class="award anim d1">Red Dot Award · 2026</div>
+      <h2 class="display anim d2 mt-l" style="font-size:96px;">The payoff.</h2>
+      <p class="lede anim d3 mt-m" style="max-width:44ch;text-align:center;margin:0 auto;color:rgba(255,255,255,.78);">Culligan Purity won the 2026 Red Dot Award for innovative commercial water filtration design — the first product line built on the language we defined.</p>
+      <a class="plink anim d3 mt-l" href="https://culliganinternational.com/newsroom/culligan-purity-wins-2026-red-dot-award-for-innovative-commercial-water-filtration-design" target="_blank" rel="noopener" style="font-family:var(--font-mono);font-size:16px;letter-spacing:.08em;">Read the announcement ↗</a>
+    </div>
+    <div class="foot"><span>01 — Culligan · VBL</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 22 · BEYOND CULLIGAN — DIVIDER ════════ -->
+  <section class="slide lav pad" data-label="Beyond Culligan">
+    <div class="stack" style="height:100%;justify-content:center;">
+      <div class="kicker"><span class="bar"></span>Beyond Culligan</div>
+      <h2 class="h-xl mt-m" style="max-width:22ch;">Two more things<br>I've built.</h2>
+      <p class="lede mt-l" style="max-width:46ch;">An AI-first product taken to a finished UI, and a live weekend experiment that proves I ship — not just specify.</p>
+    </div>
+    <div class="foot"><span>02 / 03 — Beyond Culligan</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 23 · LIGN ════════ -->
+  <section class="slide pad" data-label="Lign — Overview">
+    <div class="kicker"><span class="num">02</span><span class="bar"></span>Lign.ai · AI-first product</div>
+    <div class="row between center mt-s">
+      <h2 class="h-lg" style="max-width:18ch;">From wireframes to a finished, shippable UI.</h2>
+    </div>
+    <div class="arc mt-l">
+      <div class="step"><div class="n">CHALLENGE</div><h4>AI-first, from scratch</h4><p>Design an AI-native product experience with its own design system and brand.</p></div>
+      <div class="step"><div class="n">PROCESS</div><h4>Wireframe → UX/UI</h4><p>Took it from structural wireframes to a finished, branded interface.</p></div>
+      <div class="step"><div class="n">OUTCOME</div><h4>A real product feel</h4><p>Design system + branding, resolved to something that looks shipped.</p></div>
+    </div>
+    <div class="grid mt-l" style="grid-template-columns:1fr 1fr 1fr;gap:18px;height:30%;">
+      <div class="ph"><div class="ph-l"><b>Asset</b>Wireframes</div></div>
+      <div class="ph"><div class="ph-l"><b>Asset</b>Final UX/UI</div></div>
+      <div class="ph"><div class="ph-l"><b>▶ GIF</b>App in motion</div></div>
+    </div>
+    <div class="foot"><span>02 — Lign.ai</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 24 · SUNSPOT ════════ -->
+  <section class="slide mist pad" data-label="SunSpot">
+    <div class="row between center">
+      <div class="stack gap-s">
+        <div class="kicker"><span class="num">03</span><span class="bar"></span>SunSpot · for fun (WIP)</div>
+        <h2 class="h-lg mt-s" style="max-width:22ch;">I built this for fun — I just wanted to know where the sun is.</h2>
+      </div>
+      <a class="award" href="https://findsunspot.com" target="_blank" rel="noopener">findsunspot.com ↗</a>
+    </div>
+    <div class="row gap-l mt-l" style="height:54%;">
+      <div class="stack" style="flex:1;justify-content:center;">
+        <p class="lede" style="max-width:32ch;">A vibe-coded PWA that tells you where to sit in the sun right now. Live, in the wild, and being sharpened — better predictions, new visual identity.</p>
+        <div class="tags mt-l"><span class="tag ghost">Vibe-coded</span><span class="tag ghost">PWA</span><span class="tag ghost">Live</span><span class="tag ghost">WIP</span></div>
+      </div>
+      <div class="ph" style="flex:1.1;"><div class="ph-l"><b>▶ GIF</b>SunSpot experience</div></div>
+    </div>
+    <div class="foot"><span>03 — SunSpot</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ SUNSPOT — THREE VISUAL DIRECTIONS ════════ -->
+  <section class="slide mist pad" data-label="SunSpot — Directions">
+    <div class="row between center">
+      <div class="stack gap-s">
+        <div class="kicker"><span class="num">03</span><span class="bar"></span>SunSpot · the visual exploration</div>
+        <h2 class="h-md mt-s">Three directions on the table.</h2>
+      </div>
+      <p class="body" style="max-width:34ch;text-align:right;">Same product, three personalities — from playful and loud to instrument-grade and raw. The new identity will land somewhere in here.</p>
+    </div>
+    <div class="row mt-l" style="justify-content:space-between;align-items:flex-start;width:100%;">
+      <div class="mediacard" style="flex:0 0 auto;width:480px;align-items:center;text-align:center;">
+        <div class="frame" style="flex:none;height:520px;width:auto;border-radius:22px;background:var(--mist);"><img src="assets/sunspot-a.png" alt="Direction A — Gen Z / Awita mockup" style="height:100%;width:auto;object-fit:contain;"></div>
+        <div class="stack" style="gap:12px;margin-top:6px;align-items:center;">
+          <div style="display:flex;gap:9px;align-items:center;">
+            <span style="width:20px;height:20px;border-radius:50%;background:#FFE600;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#FF3DAC;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#9B5DE5;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#00E676;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#1A0A2E;"></span>
+          </div>
+          <div class="cap" style="white-space:normal;"><b>A · Gen Z / Awita</b><br>Irreverent, loud, actually fun. Pixel icons, sticker energy, capsule CTAs.</div>
+        </div>
+      </div>
+      <div class="mediacard" style="flex:0 0 auto;width:480px;align-items:center;text-align:center;">
+        <div class="frame" style="flex:none;height:520px;width:auto;border-radius:22px;background:var(--mist);"><img src="assets/sunspot-b.png" alt="Direction B — Bold Typographic mockup" style="height:100%;width:auto;object-fit:contain;"></div>
+        <div class="stack" style="gap:12px;margin-top:6px;align-items:center;">
+          <div style="display:flex;gap:9px;align-items:center;">
+            <span style="width:20px;height:20px;border-radius:50%;background:#0022FF;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#FFCB00;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#F5F3EE;border:1px solid var(--line);"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#0A0A0A;"></span>
+          </div>
+          <div class="cap" style="white-space:normal;"><b>B · Bold Typographic</b><br>Type as the hero. Klein blue + one sun yellow — editorial and confident.</div>
+        </div>
+      </div>
+      <div class="mediacard" style="flex:0 0 auto;width:480px;align-items:center;text-align:center;">
+        <div class="frame" style="flex:none;height:520px;width:auto;border-radius:22px;background:var(--mist);"><img src="assets/sunspot-c.png" alt="Direction C — Scientific / Raw mockup" style="height:100%;width:auto;object-fit:contain;"></div>
+        <div class="stack" style="gap:12px;margin-top:6px;align-items:center;">
+          <div style="display:flex;gap:9px;align-items:center;">
+            <span style="width:20px;height:20px;border-radius:50%;background:#FAF8F4;border:1px solid var(--line);"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#1C1C1C;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#C8C2B8;"></span>
+            <span style="width:20px;height:20px;border-radius:50%;background:#2E7D32;"></span>
+          </div>
+          <div class="cap" style="white-space:normal;"><b>C · Scientific / Raw</b><br>Instrument-grade. Monospaced, graph-paper grids, honest data, no decoration.</div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>03 — SunSpot · Directions</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 25 · POLAROID — DIVIDER ════════ -->
+  <section class="slide navy pad" data-label="Polaroid — Concept">
+    <div class="stack" style="height:100%;justify-content:center;position:relative;">
+      <div class="kicker"><span class="num">04</span><span class="bar"></span>A concept for Polaroid</div>
+      <h2 class="h-xl mt-m" style="max-width:20ch;">What I'd want<br>to build with you.</h2>
+      <p class="lede mt-l" style="max-width:48ch;">A speculative connected camera — a pledge for real moments in an age of AI slop. We'll co-create the direction; the next slide frames the choices.</p>
+      <div class="tags mt-xl"><span class="tag ghost">Speculative</span><span class="tag ghost">Connected</span><span class="tag ghost">SX-70 inspired</span><span class="tag ghost">To be shaped together</span></div>
+    </div>
+    <div class="foot"><span>04 — Polaroid Concept</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 26 · POLAROID — DIRECTIONS TO CO-CREATE ════════ -->
+  <section class="slide pad" data-label="Polaroid — Directions">
+    <div class="kicker"><span class="bar"></span>Let's choose a direction (placeholder)</div>
+    <h2 class="h-md mt-s" style="max-width:36ch;">Three angles for the concept — we'll pick one and go deep.</h2>
+    <div class="hub mt-l" style="grid-template-columns:repeat(3,1fr);">
+      <div class="card" style="cursor:default;">
+        <div class="idx">A</div>
+        <h3 style="font-size:30px;">The Archivist</h3>
+        <p>Analog craft, digital memory. Auto-archive, auto-frame, no reflections, a map of where every shot was taken.</p>
+        <div class="go">Off-screen, but never lost</div>
+      </div>
+      <div class="card" style="cursor:default;">
+        <div class="idx">B</div>
+        <h3 style="font-size:30px;">The Composer</h3>
+        <p>Connectivity for light & composition control — the camera helps you get the one real shot right, in-camera.</p>
+        <div class="go">Craft, assisted</div>
+      </div>
+      <div class="card" style="cursor:default;">
+        <div class="idx">C</div>
+        <h3 style="font-size:30px;">The Foldable</h3>
+        <p>An SX-70-inspired foldable form as the hero — connectivity that disappears into a beautiful object.</p>
+        <div class="go">Form leads</div>
+      </div>
+    </div>
+    <p class="body mt-l" style="max-width:64ch;">I'll research the current Now+ and flag anything that overlaps, then translate Polaroid's design language — physical and digital — into the concept.</p>
+    <div class="foot"><span>04 — Polaroid Concept</span><span class="lock"><span class="dot"></span>Confidential · Polaroid hiring team</span></div>
+  </section>
+
+  <!-- ════════ 27 · CLOSING ════════ -->
+  <section class="slide navy pad" data-label="Let's talk">
+    <div style="position:absolute;inset:0;background:radial-gradient(110% 90% at 20% 110%,rgba(240,122,106,.16),transparent 55%);"></div>
+    <div class="stack" style="height:100%;justify-content:center;position:relative;">
+      <div class="kicker"><span class="bar"></span>Thank you</div>
+      <h2 class="display mt-m" style="font-size:104px;">Let's make<br>real things.</h2>
+      <p class="lede mt-l" style="max-width:42ch;">I know what it takes to build cool, exciting, connected consumer products — and I'm genuinely excited to do it with Polaroid.</p>
+      <div class="row gap-m mt-xl center">
+        <span class="award" style="border-color:#fff;color:#fff;">Marta Axpe</span>
+        <span style="font-family:var(--font-mono);font-size:18px;letter-spacing:.12em;color:rgba(255,255,255,.55);text-transform:uppercase;">martaaxpe.com · Experience Designer & Innovation Strategist</span>
+      </div>
+    </div>
+    <div class="foot"><span>Marta Axpe — Portfolio</span><span class="lock"><span class="dot"></span>Confidential — not for distribution beyond the Polaroid hiring team</span></div>
+  </section>
+
+</deck-stage>
+<script src="deck-stage.js"></script>
+<script>
+  // Hub jump: find slide by data-label and navigate
+  function jump(label){
+    const stage=document.querySelector('deck-stage');
+    const slides=[...stage.children].filter(n=>n.tagName==='SECTION');
+    const i=slides.findIndex(s=>s.getAttribute('data-label')===label);
+    if(i>=0&&stage.goTo) stage.goTo(i);
+  }
+</script>
+
+<!-- Tweaks panel (appearance controls) -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#F07A6A",
+    "navy": "#0E1A47",
+    "displayFont": "'Bricolage Grotesque', sans-serif",
+    "bodyFont": "'Hanken Grotesk', sans-serif"
+  }/*EDITMODE-END*/;
+
+  function DeckTweaks(){
+    const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+    React.useEffect(() => {
+      const r = document.documentElement.style;
+      r.setProperty('--coral', t.accent);
+      r.setProperty('--navy', t.navy);
+      r.setProperty('--font-display', t.displayFont);
+      r.setProperty('--font-body', t.bodyFont);
+    }, [t.accent, t.navy, t.displayFont, t.bodyFont]);
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Accent" />
+        <TweakColor label="Coral accent" value={t.accent}
+          options={['#F07A6A', '#E8593F', '#F2A65A', '#E7708F']}
+          onChange={(v) => setTweak('accent', v)} />
+        <TweakColor label="Dark sections" value={t.navy}
+          options={['#0E1A47', '#0A1230', '#191A4D', '#14233F']}
+          onChange={(v) => setTweak('navy', v)} />
+        <TweakSection label="Type" />
+        <TweakSelect label="Display font" value={t.displayFont}
+          options={[
+            { value: "'Bricolage Grotesque', sans-serif", label: 'Bricolage Grotesque' },
+            { value: "'Space Grotesk', sans-serif", label: 'Space Grotesk' },
+            { value: "'Instrument Serif', serif", label: 'Instrument Serif' }
+          ]}
+          onChange={(v) => setTweak('displayFont', v)} />
+        <TweakSelect label="Body font" value={t.bodyFont}
+          options={[
+            { value: "'Hanken Grotesk', sans-serif", label: 'Hanken Grotesk' },
+            { value: "'Space Grotesk', sans-serif", label: 'Space Grotesk' },
+            { value: "'IBM Plex Sans', sans-serif", label: 'IBM Plex Sans' }
+          ]}
+          onChange={(v) => setTweak('bodyFont', v)} />
+      </TweaksPanel>
+    );
+  }
+
+  const tweakHost = document.createElement('div');
+  document.body.appendChild(tweakHost);
+  ReactDOM.createRoot(tweakHost).render(<DeckTweaks />);
+</script>
+</body>
+</html>
